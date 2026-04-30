@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan de Formación 2026–2028 · Contemplativos en la Acción</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:        #b8975a;
+      --gold-light:  #d4b07a;
+      --gold-faint:  #f5edd8;
+      --navy:        #1a2340;
+      --navy-mid:    #253160;
+      --cream:       #faf7f2;
+      --ink:         #1e1e1e;
+      --muted:       #6b6555;
+      --rule:        rgba(184,151,90,.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem 6rem;
+      background: var(--navy);
+      overflow: hidden;
+    }
+
+    /* Radial aurora background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,151,90,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 15% 80%, rgba(37,49,96,.8) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 85%, rgba(184,151,90,.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Fine grain texture */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      opacity: .5;
+      pointer-events: none;
+    }
+
+    /* Decorative top cross-line */
+    .hero-rule {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+      margin: 0 auto 2.5rem;
+      animation: fadeDown 1.2s ease both;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .35em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      animation: fadeUp .9s .2s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: #fff;
+      line-height: 1.1;
+      max-width: 820px;
+      margin: 0 auto .6rem;
+      animation: fadeUp .9s .35s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: rgba(255,255,255,.55);
+      letter-spacing: .04em;
+      margin-top: .8rem;
+      animation: fadeUp .9s .5s ease both;
+    }
+
+    /* Bottom ornament */
+    .hero-ornament {
+      margin-top: 3.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: fadeUp .9s .65s ease both;
+    }
+    .hero-ornament span { display: block; height: 1px; width: 80px; background: var(--rule); }
+    .hero-ornament svg { color: var(--gold); opacity: .7; }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      animation: fadeUp .9s .9s ease both;
+    }
+    .scroll-cue span {
+      font-family: 'Cinzel', serif;
+      font-size: .6rem;
+      letter-spacing: .3em;
+      color: rgba(255,255,255,.35);
+      text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      transform: rotate(45deg);
+      animation: bounce 1.8s ease infinite;
+    }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26,35,64,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      padding: .9rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: clamp(1rem, 4vw, 3rem);
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-family: 'Cinzel', serif;
+      font-size: .68rem;
+      letter-spacing: .22em;
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .25s;
+    }
+    nav a:hover { color: var(--gold-light); }
+
+    /* ── SECTIONS ─────────────────────────────────── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.8rem;
+    }
+
+    h2 em { font-style: italic; color: var(--gold); }
+
+    p { color: var(--muted); margin-bottom: 1.2rem; font-size: 1.02rem; }
+
+    /* ── SEPARATOR ────────────────────────────────── */
+    .sep {
+      max-width: 860px;
+      margin: 0 auto;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── PILLARS ──────────────────────────────────── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--gold);
+      padding: 2rem 1.6rem;
+      position: relative;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .pillar:hover { box-shadow: 0 8px 32px rgba(184,151,90,.15); transform: translateY(-4px); }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--gold-faint);
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+    .pillar h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: .6rem;
+    }
+    .pillar p { font-size: .92rem; margin: 0; }
+
+    /* ── RESOURCES ────────────────────────────────── */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+      margin-top: 2.5rem;
+    }
+
+    .res-block {
+      background: var(--navy);
+      color: #fff;
+      padding: 2rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s;
+    }
+    .res-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 0% 100%, rgba(184,151,90,.15) 0%, transparent 70%);
+    }
+    .res-block:hover { transform: translateY(-3px); }
+
+    .res-block-label {
+      font-family: 'Cinzel', serif;
+      font-size: .6rem;
+      letter-spacing: .3em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+    .res-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: .5rem;
+      color: #fff;
+    }
+    .res-block p { color: rgba(255,255,255,.55); font-size: .88rem; margin: 0; }
+
+    /* ── TEXTS ────────────────────────────────────── */
+    .texts-list { margin-top: 2.5rem; }
+
+    .text-item {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 1.4rem;
+      align-items: start;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background .2s;
+    }
+    .text-item:first-child { border-top: 1px solid var(--rule); }
+
+    .text-letter {
+      width: 3rem;
+      height: 3rem;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .text-meta { font-size: .82rem; color: var(--gold); font-family: 'Cinzel', serif; letter-spacing: .1em; margin-bottom: .2rem; }
+    .text-item h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--navy); margin-bottom: .1rem; }
+    .text-item p { font-size: .9rem; margin: 0; }
+
+    /* ── BIBLIOGRAPHY ─────────────────────────────── */
+    .bib-list {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .bib-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.4rem 1.6rem;
+      background: #fff;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    }
+
+    .bib-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .bib-item h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--navy); font-weight: 600; }
+    .bib-item p { font-size: .88rem; margin: .2rem 0 0; color: var(--muted); }
+
+    /* ── CALENDAR ─────────────────────────────────── */
+    #calendario { background: var(--navy); padding: 6rem 2rem; }
+    #calendario section { max-width: 860px; margin: 0 auto; padding: 0; }
+    #calendario h2 { color: #fff; }
+    #calendario h2 em { color: var(--gold-light); }
+    #calendario .section-label { color: var(--gold-light); }
+    #calendario .section-label::after { background: rgba(184,151,90,.25); }
+    #calendario p { color: rgba(255,255,255,.55); }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 600px) { .calendar-grid { grid-template-columns: 1fr; } }
+
+    .cal-card {
+      border: 1px solid rgba(184,151,90,.3);
+      padding: 2.4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cal-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+
+    .cal-year {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .3em;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+    .cal-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .cal-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .cal-card li {
+      color: rgba(255,255,255,.6);
+      font-size: .9rem;
+      padding: .5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+    .cal-card li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── INDICATORS ───────────────────────────────── */
+    .indicators {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .ind-card {
+      flex: 1;
+      min-width: 200px;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold);
+      padding: 2rem 1.8rem;
+      text-align: center;
+    }
+    .ind-icon { font-size: 2.5rem; margin-bottom: .8rem; }
+    .ind-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--navy); font-weight: 600; }
+    .ind-card p { font-size: .88rem; margin: .5rem 0 0; }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      background: #0f1628;
+      color: rgba(255,255,255,.35);
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: .82rem;
+      letter-spacing: .05em;
+    }
+    footer .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: .2em;
+      margin-bottom: .5rem;
+    }
+    footer hr { border: none; border-top: 1px solid rgba(255,255,255,.07); margin: 1.2rem auto; max-width: 200px; }
+
+    /* ── LOGO PLACEHOLDER ─────────────────────────── */
+    .logo-area {
+      margin-bottom: 2rem;
+      animation: fadeDown 1s .1s ease both;
+    }
+    .logo-placeholder {
+      width: 72px;
+      height: 72px;
+      border: 1px solid rgba(184,151,90,.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      color: var(--gold);
+      font-size: 1.8rem;
+    }
+
+    /* ── ANIMATIONS ───────────────────────────────── */
+    @keyframes fadeUp   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50%       { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* Scroll-reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<div class="hero">
+  <div class="logo-area">
+    <div class="logo-placeholder">✦</div>
+    <!-- Sustituye el div anterior por tu logo: <img src="logo.png" alt="Logo" style="height:72px;" /> -->
+  </div>
+  <div class="hero-rule"></div>
+  <div class="hero-eyebrow">Movimiento de Santa María · Comisión de Formación</div>
+  <h1>Plan de Formación<br /><em>Bienio 2026–2028</em></h1>
+  <p class="hero-sub">Contemplativos en la Acción</p>
+  <div class="hero-ornament">
+    <span></span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+    <span></span>
+  </div>
+  <div class="scroll-cue">
+    <span>Explorar</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<!-- ══ NAV ═══════════════════════════════════════════ -->
+<nav>
+  <a href="#presentacion">Presentación</a>
+  <a href="#pilares">Pilares</a>
+  <a href="#recursos">Recursos</a>
+  <a href="#textos">Textos</a>
+  <a href="#bibliografia">Bibliografía</a>
+  <a href="#calendario">Calendario</a>
+  <a href="#indicadores">Indicadores</a>
+</nav>
+
+<!-- ══ PRESENTACIÓN ══════════════════════════════════ -->
+<section id="presentacion">
+  <div class="section-label reveal">01 · Presentación</div>
+  <h2 class="reveal">Una llamada a la <em>maduración</em><br />en la vocación cristiana</h2>
+  <p class="reveal">La formación es una dimensión fundamental del proceso de crecimiento y maduración de toda persona, en todos los ámbitos de la vida, pero especialmente en la vocación cristiana.</p>
+  <p class="reveal">Hacerlo como Movimiento de Santa María es vivir la comunión, el carisma recibido y compartido, el camino de santificación personal e institucional.</p>
+  <p class="reveal">La Comisión de formación propone para el próximo bienio este rasgo de nuestro carisma: <strong>Contemplativos en la Acción</strong>.</p>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══ PILARES ════════════════════════════════════════ -->
+<section id="pilares">
+  <div class="section-label reveal">02 · Tres pilares</div>
+  <h2 class="reveal">Lo que nos permite<br /><em>trabajar</em> este carisma</h2>
+  <div class="pillars">
+    <div class="pillar reveal">
+      <div class="pillar-num">I</div>
+      <h3>La vida interior</h3>
+      <p>El cultivo de la interioridad como raíz de toda acción apostólica. <em>Contemplativos.</em></p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">II</div>
+      <h3>La laicidad</h3>
+      <p>La presencia transformadora en el mundo desde la propia condición laical. <em>Acción.</em></p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">III</div>
+      <h3>El carisma</h3>
+      <p>Un estilo peculiar de unidad entre ambas dimensiones. <em>Contemplativos en la Acción.</em></p>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══ RECURSOS ═══════════════════════════════════════ -->
+<section id="recursos">
+  <div class="section-label reveal">03 · Recursos</div>
+  <h2 class="reveal">Dos bloques de<br /><em>materiales</em> formativos</h2>
+  <p class="reveal">Cada tema viene acompañado de una infografía, un vídeo de presentación, una presentación para el coordinador y un texto con cuestiones para la reflexión y el coloquio.</p>
+  <div class="resources-grid">
+    <div class="res-block reveal">
+      <div class="res-block-label">Bloque I</div>
+      <h3>Fundamento Evangélico</h3>
+      <p>Textos para las pláticas de los retiros del bienio. La Palabra como punto de partida.</p>
+    </div>
+    <div class="res-block reveal">
+      <div class="res-block-label">Bloque II</div>
+      <h3>Nuestro Patrimonio</h3>
+      <p>Textos para lectura personal y coloquios. Personalización del contenido y puesta en común de vivencias.</p>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══ TEXTOS ════════════════════════════════════════ -->
+<section id="textos">
+  <div class="section-label reveal">04 · Textos para reflexión y coloquio</div>
+  <h2 class="reveal">Cuatro textos,<br /><em>ocho coloquios</em></h2>
+  <div class="texts-list">
+    <div class="text-item reveal">
+      <div class="text-letter">A</div>
+      <div>
+        <div class="text-meta">El fundamento · 2026–2027</div>
+        <h3>El laico cristiano, un consagrado</h3>
+        <p>Abilio de Gregorio</p>
+      </div>
+    </div>
+    <div class="text-item reveal">
+      <div class="text-letter">B</div>
+      <div>
+        <div class="text-meta">La misión · 2026–2027</div>
+        <h3>La triple misión como laicos bautizados: Sacerdote, profeta, rey</h3>
+        <p>Santiago Arellano</p>
+      </div>
+    </div>
+    <div class="text-item reveal">
+      <div class="text-letter">C</div>
+      <div>
+        <div class="text-meta">La espiritualidad · 2027–2028</div>
+        <h3>Una espiritualidad ignaciana: Contemplativos en la Acción</h3>
+        <p>Elías Royón</p>
+      </div>
+    </div>
+    <div class="text-item reveal">
+      <div class="text-letter">D</div>
+      <div>
+        <div class="text-meta">El carisma · 2027–2028</div>
+        <h3>El legado del P. Morales y el Magisterio de la Iglesia</h3>
+        <p>Andrés Jiménez</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══ BIBLIOGRAFÍA ═══════════════════════════════════ -->
+<section id="bibliografia">
+  <div class="section-label reveal">05 · Bibliografía</div>
+  <h2 class="reveal">Lecturas de<br /><em>referencia</em> para el bienio</h2>
+  <div class="bib-list">
+    <div class="bib-item reveal">
+      <div class="bib-num">1</div>
+      <div>
+        <h3>Hora de los laicos</h3>
+        <p>Tomás Morales</p>
+      </div>
+    </div>
+    <div class="bib-item reveal">
+      <div class="bib-num">2</div>
+      <div>
+        <h3>Labrados en roca</h3>
+        <p>Cruzados de Santa María</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CALENDARIO ════════════════════════════════════ -->
+<div id="calendario">
+  <section>
+    <div class="section-label reveal">06 · Calendario</div>
+    <h2 class="reveal">Distribución<br /><em>por cursos</em></h2>
+    <p class="reveal">Cada curso contempla cuatro apartados que generarán cuatro coloquios a lo largo del año.</p>
+    <div class="calendar-grid">
+      <div class="cal-card reveal">
+        <div class="cal-year">Curso · 2026 – 2027</div>
+        <h3>Primeros dos textos</h3>
+        <ul>
+          <li>Texto A — El laico cristiano, un consagrado</li>
+          <li>Texto B — Sacerdote, profeta, rey</li>
+          <li>4 apartados · 4 coloquios</li>
+        </ul>
+      </div>
+      <div class="cal-card reveal">
+        <div class="cal-year">Curso · 2027 – 2028</div>
+        <h3>Siguientes dos textos</h3>
+        <ul>
+          <li>Texto C — Contemplativos en la Acción</li>
+          <li>Texto D — El legado del P. Morales</li>
+          <li>4 apartados · 4 coloquios</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ INDICADORES ════════════════════════════════════ -->
+<section id="indicadores">
+  <div class="section-label reveal">07 · Indicadores</div>
+  <h2 class="reveal">Cómo valorar<br />el <em>desarrollo</em> del programa</h2>
+  <div class="indicators">
+    <div class="ind-card reveal">
+      <div class="ind-icon">📚</div>
+      <h3>Temas tratados</h3>
+      <p>Seguimiento de los temas abordados en el grupo a lo largo del bienio.</p>
+    </div>
+    <div class="ind-card reveal">
+      <div class="ind-icon">✦</div>
+      <h3>Incidencia personal</h3>
+      <p>Valoración del impacto de los contenidos en la vida personal de cada miembro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Movimiento de Santa María</div>
+  <hr />
+  <p>Plan de Formación · Bienio 2026–2028 · <em>Contemplativos en la Acción</em></p>
+  <p style="margin-top:.5rem;">Comisión de Formación</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i * 0.05) + 's';
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

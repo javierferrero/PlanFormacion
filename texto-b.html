@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texto B · La triple misión del laico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root{--gold:#b8975a;--gold-light:#d4b07a;--gold-faint:#f5edd8;--navy:#1a2340;--cream:#faf7f2;--ink:#1e1e1e;--muted:#6b6555;--rule:rgba(184,151,90,.3)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--cream);color:var(--ink);font-family:'Lato',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+    nav{position:sticky;top:0;z-index:100;background:rgba(26,35,64,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+    .nav-back{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;color:rgba(255,255,255,.6);text-decoration:none;text-transform:uppercase;transition:color .25s}
+    .nav-back:hover{color:var(--gold-light)}
+    .nav-texts{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .nav-texts a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;color:rgba(255,255,255,.45);text-decoration:none;text-transform:uppercase;transition:color .25s}
+    .nav-texts a:hover,.nav-texts a.active{color:var(--gold-light)}
+    .text-header{background:var(--navy);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+    .text-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(184,151,90,.15) 0%,transparent 70%);pointer-events:none}
+    .text-badge{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1.2rem}
+    .text-header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.8rem);color:#fff;line-height:1.15;max-width:700px;margin:0 auto .8rem}
+    .text-header h1 em{font-style:italic;color:var(--gold-light)}
+    .text-author{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:rgba(255,255,255,.5);margin-top:.5rem}
+    .text-course{display:inline-block;margin-top:1.2rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.25em;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.3rem .8rem;text-transform:uppercase}
+    .mode-bar{background:#fff;border-bottom:1px solid var(--rule);padding:.9rem 2rem;display:flex;justify-content:center;align-items:center;gap:1rem;position:sticky;top:49px;z-index:90}
+    .mode-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+    .toggle-wrap{display:flex;border:1px solid var(--rule);overflow:hidden}
+    .toggle-btn{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;background:transparent;border:none;cursor:pointer;color:var(--muted);transition:all .2s}
+    .toggle-btn.active{background:var(--navy);color:#fff}
+    .content{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+    .mode-summary{display:block}.mode-full{display:none}
+    .idea-central{background:var(--navy);color:#fff;padding:2.5rem 2rem;margin-bottom:3rem;position:relative;overflow:hidden}
+    .idea-central::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 0% 100%,rgba(184,151,90,.12) 0%,transparent 70%)}
+    .idea-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;color:var(--gold-light);text-transform:uppercase;margin-bottom:.8rem}
+    .idea-central p{color:rgba(255,255,255,.85);font-size:1.05rem;margin:0;line-height:1.7;position:relative}
+    .schema-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}
+    .schema-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+    .schema-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+    .schema-item{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--gold);padding:1.2rem 1.4rem;display:flex;align-items:flex-start;gap:1rem}
+    .schema-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold-faint);line-height:1;flex-shrink:0}
+    .schema-item p{font-size:.9rem;color:var(--navy);margin:0;font-weight:400;line-height:1.4}
+    .quotes-section{margin-bottom:3rem}
+    blockquote{border-left:3px solid var(--gold);padding:1.2rem 1.5rem;background:var(--gold-faint);margin-bottom:1rem}
+    blockquote p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--navy);margin:0 0 .4rem;line-height:1.5}
+    blockquote cite{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase}
+    .session-guide{background:#fff;border:1px solid var(--rule);padding:1.8rem 2rem;margin-bottom:3rem}
+    .session-guide h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+    .session-row{display:flex;gap:1rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+    .session-row:last-child{border-bottom:none}
+    .session-tag{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.1em;color:var(--gold);background:var(--gold-faint);padding:.2rem .6rem;flex-shrink:0}
+    .session-row p{font-size:.88rem;color:var(--muted);margin:0}
+    .coord-block{background:var(--navy);padding:3rem 2rem;margin-top:3rem;position:relative;overflow:hidden}
+    .coord-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(184,151,90,.1) 0%,transparent 60%)}
+    .coord-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold-light);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;position:relative}
+    .coord-label::after{content:'';flex:1;height:1px;background:rgba(184,151,90,.25)}
+    .coord-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;font-weight:300;margin-bottom:1.5rem;position:relative}
+    .questions-list{list-style:none;padding:0;position:relative}
+    .questions-list li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.75);font-size:.98rem;display:flex;align-items:baseline;gap:.8rem}
+    .questions-list li:last-child{border-bottom:none}
+    .questions-list li::before{content:'◦';color:var(--gold);flex-shrink:0}
+    .coord-download{margin-top:2rem;display:inline-flex;align-items:center;gap:.6rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.6rem 1.2rem;transition:all .25s;position:relative}
+    .coord-download:hover{background:var(--gold);color:var(--navy)}
+    .full-text-intro{background:var(--gold-faint);border:1px solid var(--gold);padding:1.2rem 1.6rem;margin-bottom:2.5rem;font-size:.9rem;color:var(--navy)}
+    .full-text-intro a{color:var(--gold)}
+    .full-toc{margin-bottom:2.5rem}
+    .full-toc h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+    .full-toc ol{padding-left:1.2rem}
+    .full-toc li{margin-bottom:.4rem}
+    .full-toc a{color:var(--navy);font-size:.9rem;text-decoration:none;transition:color .2s}
+    .full-toc a:hover{color:var(--gold)}
+    .text-section{margin-bottom:3rem}
+    .text-section h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--navy);font-weight:600;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+    .text-section p{color:var(--muted);margin-bottom:1rem;font-size:.98rem}
+    .text-section blockquote{margin:1.5rem 0}
+    .back-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule);padding:.5rem 1rem;margin-bottom:2rem;transition:all .25s}
+    .back-btn:hover{border-color:var(--gold)}
+    footer{background:#0f1628;color:rgba(255,255,255,.35);text-align:center;padding:2.5rem 2rem;font-size:.82rem}
+    .footer-logo{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);letter-spacing:.2em;margin-bottom:.4rem}
+    footer hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:1rem auto;max-width:160px}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">← Volver al plan</a>
+  <div class="nav-texts">
+    <a href="texto-a.html">A · Abilio de Gregorio</a>
+    <a href="texto-b.html" class="active">B · Santiago Arellano</a>
+    <a href="texto-c.html">C · Elías Royón</a>
+    <a href="texto-d.html">D · Andrés Jiménez</a>
+  </div>
+</nav>
+
+<div class="text-header">
+  <div class="text-badge">Texto B · La misión</div>
+  <h1>La triple misión del laico:<br /><em>Sacerdote, profeta y rey</em></h1>
+  <div class="text-author">Santiago Arellano Hernández</div>
+  <div class="text-course">Curso 2026 – 2027</div>
+</div>
+
+<div class="mode-bar">
+  <span class="mode-label">Modo de lectura</span>
+  <div class="toggle-wrap">
+    <button class="toggle-btn active" onclick="setMode('summary')">Resumen</button>
+    <button class="toggle-btn" onclick="setMode('full')">Texto completo</button>
+  </div>
+</div>
+
+<div class="content">
+  <a href="index.html" class="back-btn">← Plan de formación</a>
+
+  <!-- MODO RESUMEN -->
+  <div class="mode-summary" id="mode-summary">
+
+    <div class="idea-central">
+      <div class="idea-label">Idea central</div>
+      <p>El laico vive su fe en la única viña del Señor, ejerciendo su triple misión bautismal en la cotidianidad: como sacerdote ofrece su trabajo, como profeta ilumina la realidad desde la fe, como rey la ordena según Dios.</p>
+    </div>
+
+    <div class="schema-label">Esquema del texto</div>
+    <div class="schema-grid">
+      <div class="schema-item"><div class="schema-num">1</div><p>La única viña</p></div>
+      <div class="schema-item"><div class="schema-num">2</div><p>Sacerdote: ofrecer la vida</p></div>
+      <div class="schema-item"><div class="schema-num">3</div><p>Profeta: iluminar la realidad</p></div>
+      <div class="schema-item"><div class="schema-num">4</div><p>Rey: ordenar la creación</p></div>
+      <div class="schema-item"><div class="schema-num">5</div><p>Formación sistemática</p></div>
+      <div class="schema-item"><div class="schema-num">6</div><p>Enseñar a ser laicos</p></div>
+    </div>
+
+    <div class="quotes-section">
+      <div class="schema-label">Citas para la reflexión</div>
+      <blockquote>
+        <p>«No hay dos viñas: la del templo y la de la ciudad. Es la única viña del Señor.»</p>
+        <cite>Santiago Arellano</cite>
+      </blockquote>
+      <blockquote>
+        <p>«El laico que falta a sus obligaciones temporales, falta a sus deberes con el prójimo; falta, sobre todo, a sus obligaciones para con Dios.»</p>
+        <cite>Gaudium et Spes, n. 43</cite>
+      </blockquote>
+      <blockquote>
+        <p>«Nuestra misión es el Reino de Cristo en el orden de la cotidianidad.»</p>
+        <cite>Santiago Arellano</cite>
+      </blockquote>
+    </div>
+
+    <div class="session-guide">
+      <h4>Guía de sesiones · Para el coordinador</h4>
+      <div class="session-row"><span class="session-tag">Sesión 1</span><p>Punto 1: La única viña. Fe y vida, un espacio indiviso.</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 2</span><p>Puntos 2–3: El laico como sacerdote y como profeta en su profesión.</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 3</span><p>Punto 4: El laico como rey. Ordenar la creación según Dios.</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 4</span><p>Puntos 5–6: La formación necesaria y el apostolado de la laicidad.</p></div>
+    </div>
+
+    <div class="coord-block" id="coordinador">
+      <div class="coord-label">Zona del coordinador</div>
+      <div class="coord-title">Preguntas para el coloquio</div>
+      <ul class="questions-list">
+        <li>¿Dónde experimento unidad entre mi fe y mi vida concreta?</li>
+        <li>¿Cómo ofrezco mi trabajo diario como acto de culto?</li>
+        <li>¿Qué significa ser profeta en mi profesión o entorno?</li>
+        <li>¿Qué ámbito de mi vida necesito «ordenar según Dios»?</li>
+        <li>¿Qué formación concreta necesito para cumplir mi misión?</li>
+      </ul>
+      <a href="Aprender_a_ser_laicos_Santiago_Arellano_adaptado_MoSM.pdf" class="coord-download" download>↓ Descargar texto completo en PDF</a>
+    </div>
+
+  </div>
+
+  <!-- MODO TEXTO COMPLETO -->
+  <div class="mode-full" id="mode-full">
+
+    <div class="full-text-intro">
+      Reflexiones de Santiago Arellano con motivo del XV aniversario de la <em>Christifideles laici</em>. Galapagar, 13 de marzo de 2004.
+      <a href="Aprender_a_ser_laicos_Santiago_Arellano_adaptado_MoSM.pdf" download>↓ Descargar PDF</a>
+    </div>
+
+    <div class="full-toc">
+      <h4>Índice</h4>
+      <ol>
+        <li><a href="#sec1">La única viña</a></li>
+        <li><a href="#sec2">Embellecer la creación</a></li>
+        <li><a href="#sec3">Sacerdotes, profetas y reyes</a></li>
+        <li><a href="#sec4">Formación sistemática</a></li>
+        <li><a href="#sec5">Enseñar a ser laicos</a></li>
+        <li><a href="#sec6">Preparando el camino</a></li>
+      </ol>
+    </div>
+
+    <div class="text-section" id="sec1">
+      <h3>1. La única viña</h3>
+      <p>Europa y Occidente han separado el orden de la fe del orden de la vida. Han podido llegar a perder el sentido de Dios con esta desacralización brutal. Esto incluye también a aquellos cristianos que han hecho separación entre la vida privada y la pública, olvidando que el espacio propio del laico es la vivencia de Dios en la vida cotidiana, haciendo de la cotidianidad el espacio propio de su misión apostólica.</p>
+      <p>Somos parte de la Iglesia. Pertenecemos a la única viña que hay — que no hay dos viñas, la viña del templo y la viña de la ciudad —. Dios llama a trabajar a todos en la misma viña, única, la del Señor. La Christifideles laici nos dice claramente que la viña del Señor es el mundo entero, que debe ser transformado según el designio divino.</p>
+      <p>El bautismo, además de hacernos hijos de Dios y herederos del Cielo, nos hace partícipes del triple don de Cristo: somos sacerdotes, profetas y reyes.</p>
+    </div>
+
+    <div class="text-section" id="sec2">
+      <h3>2. Embellecer la creación</h3>
+      <p>Los ámbitos de nuestra responsabilidad debemos abordarlos como sacerdotes, como profetas y como reyes, participando del triple don de Cristo. Como sacerdotes, ofreciendo nuestras obras, alegrías y tristezas de cada día, poniéndolas en el altar. Como profetas, estudiando y conociendo a fondo nuestra profesión. Como reyes, ordenando las cosas según el orden querido por Dios.</p>
+      <p>La santidad no consiste en cultivar virtudes como fin, sino como medio. Las virtudes como hábitos buenos nos facilitan el cumplimiento de nuestras obligaciones. Tenemos que hacernos cada vez más capaces para vivir mejor nuestra vocación, haciendo un trabajo más perfeccionado en todas las horas de nuestra vida. Todo laico debe ser en primer lugar un buen profesional. A ser posible, el mejor.</p>
+    </div>
+
+    <div class="text-section" id="sec3">
+      <h3>3. Sacerdotes, profetas y reyes</h3>
+      <p>La Christifideles laici denuncia la tentación de reservar el interés por los servicios eclesiales, de tal modo que frecuentemente se ha llegado a una práctica dejación de las responsabilidades específicas en el mundo profesional, social, económico, cultural y político. Lo constitutivo nuestro no es suplir al sacerdote en las actividades de la Iglesia.</p>
+      <blockquote><p>«El laico que falta a sus obligaciones temporales, falta a sus deberes con el prójimo; falta, sobre todo, a sus obligaciones para con Dios y pone en peligro su eterna salvación.»</p><cite>Gaudium et Spes, n. 43</cite></blockquote>
+      <p>Nuestro sacerdocio consiste en participar en la alabanza del Señor haciendo de nuestra vida cotidiana una oración en el obrar, en el hacer, en el trabajar. Ofrecemos nuestros trabajos, alegrías y tristezas para que sean parte del ofrecimiento de Cristo al Padre. Ese es nuestro sacerdocio.</p>
+    </div>
+
+    <div class="text-section" id="sec4">
+      <h3>4. Formación sistemática</h3>
+      <p>Todos tenemos la obligación de formarnos sistemáticamente para poder profundizar y ejercer este triple don de Cristo. Cada cosa que tengamos que realizar como profesionales, la estudiemos con la hondura necesaria, precisamente porque no la hacemos para nosotros, sino porque Dios nos ha puesto al frente de una responsabilidad.</p>
+      <p>Siendo hombres del mundo, tenemos que estar en el corazón de la Iglesia. Todo lo que Dios nos encomienda lo haremos mal si no contamos con la ayuda de los sacramentos. La gracia es vida para el servicio, para el perfeccionamiento. No es posible el dominio de la Tierra sin curar el corazón desordenado de cada uno de nosotros.</p>
+      <blockquote><p>«Contemplar antes de actuar. Dedicar tiempo a estudiar, y muchas horas a la formación.»</p><cite>Santiago Arellano</cite></blockquote>
+    </div>
+
+    <div class="text-section" id="sec5">
+      <h3>5. Enseñar a ser laicos</h3>
+      <p>El don maravilloso que han recibido los Cruzados es nada menos que ser apóstoles de la laicidad, para hacer que los laicos entiendan estas cosas. Tienen un carisma que no existe en ningún otro sitio: se consagran exclusivamente para poder vivir la laicidad, con el compromiso de hacerla extensible vitalmente a los demás.</p>
+      <p>Su peculiar evangelización es enseñar a ser laicos. Siendo profesores, maestros, médicos, ingenieros, militares, tienen la obligación en el ámbito que les rodea de ser sacerdotes, profetas y reyes, enseñando a los demás a serlo. Este es un carisma que se necesita más que nunca.</p>
+    </div>
+
+    <div class="text-section" id="sec6">
+      <h3>6. Preparando el camino</h3>
+      <p>La realidad en la que estamos no es la de los hombres convertidos, sino la de los hombres que esperamos que se conviertan. La gracia no destruye la naturaleza, sino que la perfecciona. El cultivo de las virtudes humanas se convierte en tarea de todo educador hoy.</p>
+      <p>Tenemos una misión muy urgente: recuperar la conciencia de la dignidad humana. Por eso es clave en nuestra evangelización hablar de ella. Sólo en Cristo la humanidad alcanzará su plenitud. Una viña, sólo hay una viña. Cuando voy a la oficina, no salgo de mi viña y entro en la del vecino. Es la misma viña del Señor, adonde Él me llama para ser sacerdote, profeta y rey.</p>
+    </div>
+
+    <div class="coord-block">
+      <div class="coord-label">Zona del coordinador</div>
+      <div class="coord-title">Preguntas para el coloquio</div>
+      <ul class="questions-list">
+        <li>¿Dónde experimento unidad entre mi fe y mi vida concreta?</li>
+        <li>¿Cómo ofrezco mi trabajo diario como acto de culto?</li>
+        <li>¿Qué significa ser profeta en mi profesión o entorno?</li>
+        <li>¿Qué ámbito de mi vida necesito «ordenar según Dios»?</li>
+        <li>¿Qué formación concreta necesito para cumplir mi misión?</li>
+      </ul>
+      <a href="Aprender_a_ser_laicos_Santiago_Arellano_adaptado_MoSM.pdf" class="coord-download" download>↓ Descargar texto completo en PDF</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Movimiento de Santa María</div>
+  <hr />
+  <p>Plan de Formación · Bienio 2026–2028 · <em>Contemplativos en la Acción</em></p>
+</footer>
+
+<script>
+  function setMode(mode) {
+    document.getElementById('mode-summary').style.display = mode === 'summary' ? 'block' : 'none';
+    document.getElementById('mode-full').style.display = mode === 'full' ? 'block' : 'none';
+    document.querySelectorAll('.toggle-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (mode==='summary'&&i===0)||(mode==='full'&&i===1));
+    });
+  }
+</script>
+</body>
+</html>

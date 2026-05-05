@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texto A · El laico cristiano, un consagrado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root{--gold:#b8975a;--gold-light:#d4b07a;--gold-faint:#f5edd8;--navy:#1a2340;--cream:#faf7f2;--ink:#1e1e1e;--muted:#6b6555;--rule:rgba(184,151,90,.3)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--cream);color:var(--ink);font-family:'Lato',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+    nav{position:sticky;top:0;z-index:100;background:rgba(26,35,64,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+    .nav-back{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;color:rgba(255,255,255,.6);text-decoration:none;text-transform:uppercase;transition:color .25s}
+    .nav-back:hover{color:var(--gold-light)}
+    .nav-texts{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .nav-texts a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;color:rgba(255,255,255,.45);text-decoration:none;text-transform:uppercase;transition:color .25s}
+    .nav-texts a:hover,.nav-texts a.active{color:var(--gold-light)}
+    .text-header{background:var(--navy);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+    .text-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(184,151,90,.15) 0%,transparent 70%);pointer-events:none}
+    .text-badge{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1.2rem}
+    .text-header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.8rem);color:#fff;line-height:1.15;max-width:700px;margin:0 auto .8rem}
+    .text-header h1 em{font-style:italic;color:var(--gold-light)}
+    .text-author{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:rgba(255,255,255,.5);margin-top:.5rem}
+    .text-course{display:inline-block;margin-top:1.2rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.25em;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.3rem .8rem;text-transform:uppercase}
+    .mode-bar{background:#fff;border-bottom:1px solid var(--rule);padding:.9rem 2rem;display:flex;justify-content:center;align-items:center;gap:1rem;position:sticky;top:49px;z-index:90}
+    .mode-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+    .toggle-wrap{display:flex;border:1px solid var(--rule);overflow:hidden}
+    .toggle-btn{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;background:transparent;border:none;cursor:pointer;color:var(--muted);transition:all .2s}
+    .toggle-btn.active{background:var(--navy);color:#fff}
+    .content{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+    .mode-summary{display:block}.mode-full{display:none}
+    .idea-central{background:var(--navy);color:#fff;padding:2.5rem 2rem;margin-bottom:3rem;position:relative;overflow:hidden}
+    .idea-central::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 0% 100%,rgba(184,151,90,.12) 0%,transparent 70%)}
+    .idea-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;color:var(--gold-light);text-transform:uppercase;margin-bottom:.8rem}
+    .idea-central p{color:rgba(255,255,255,.85);font-size:1.05rem;margin:0;line-height:1.7;position:relative}
+    .schema-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}
+    .schema-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+    .schema-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+    .schema-item{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--gold);padding:1.2rem 1.4rem;display:flex;align-items:flex-start;gap:1rem}
+    .schema-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold-faint);line-height:1;flex-shrink:0}
+    .schema-item p{font-size:.9rem;color:var(--navy);margin:0;font-weight:400;line-height:1.4}
+    .quotes-section{margin-bottom:3rem}
+    blockquote{border-left:3px solid var(--gold);padding:1.2rem 1.5rem;background:var(--gold-faint);margin-bottom:1rem}
+    blockquote p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--navy);margin:0 0 .4rem;line-height:1.5}
+    blockquote cite{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase}
+    .session-guide{background:#fff;border:1px solid var(--rule);padding:1.8rem 2rem;margin-bottom:3rem}
+    .session-guide h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+    .session-row{display:flex;gap:1rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+    .session-row:last-child{border-bottom:none}
+    .session-tag{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.1em;color:var(--gold);background:var(--gold-faint);padding:.2rem .6rem;flex-shrink:0}
+    .session-row p{font-size:.88rem;color:var(--muted);margin:0}
+    .coord-block{background:var(--navy);padding:3rem 2rem;margin-top:3rem;position:relative;overflow:hidden}
+    .coord-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(184,151,90,.1) 0%,transparent 60%)}
+    .coord-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold-light);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;position:relative}
+    .coord-label::after{content:'';flex:1;height:1px;background:rgba(184,151,90,.25)}
+    .coord-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;font-weight:300;margin-bottom:1.5rem;position:relative}
+    .questions-list{list-style:none;padding:0;position:relative}
+    .questions-list li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.75);font-size:.98rem;display:flex;align-items:baseline;gap:.8rem}
+    .questions-list li:last-child{border-bottom:none}
+    .questions-list li::before{content:'◦';color:var(--gold);flex-shrink:0}
+    .coord-download{margin-top:2rem;display:inline-flex;align-items:center;gap:.6rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.6rem 1.2rem;transition:all .25s;position:relative}
+    .coord-download:hover{background:var(--gold);color:var(--navy)}
+    .full-text-intro{background:var(--gold-faint);border:1px solid var(--gold);padding:1.2rem 1.6rem;margin-bottom:2.5rem;font-size:.9rem;color:var(--navy)}
+    .full-text-intro a{color:var(--gold)}
+    .full-toc{margin-bottom:2.5rem}
+    .full-toc h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+    .full-toc ol{padding-left:1.2rem}
+    .full-toc li{margin-bottom:.4rem}
+    .full-toc a{color:var(--navy);font-size:.9rem;text-decoration:none;transition:color .2s}
+    .full-toc a:hover{color:var(--gold)}
+    .text-section{margin-bottom:3rem}
+    .text-section h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--navy);font-weight:600;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+    .text-section p{color:var(--muted);margin-bottom:1rem;font-size:.98rem}
+    .text-section blockquote{margin:1.5rem 0}
+    .back-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule);padding:.5rem 1rem;margin-bottom:2rem;transition:all .25s}
+    .back-btn:hover{border-color:var(--gold)}
+    footer{background:#0f1628;color:rgba(255,255,255,.35);text-align:center;padding:2.5rem 2rem;font-size:.82rem}
+    .footer-logo{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);letter-spacing:.2em;margin-bottom:.4rem}
+    footer hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:1rem auto;max-width:160px}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">← Volver al plan</a>
+  <div class="nav-texts">
+    <a href="texto-a.html" class="active">A · Abilio de Gregorio</a>
+    <a href="texto-b.html">B · Santiago Arellano</a>
+    <a href="texto-c.html">C · Elías Royón</a>
+    <a href="texto-d.html">D · Andrés Jiménez</a>
+  </div>
+</nav>
+
+<div class="text-header">
+  <div class="text-badge">Texto A · El fundamento</div>
+  <h1>El laico cristiano,<br /><em>un consagrado</em></h1>
+  <div class="text-author">Abilio de Gregorio</div>
+  <div class="text-course">Curso 2026 – 2027</div>
+</div>
+
+<div class="mode-bar">
+  <span class="mode-label">Modo de lectura</span>
+  <div class="toggle-wrap">
+    <button class="toggle-btn active" onclick="setMode('summary')">Resumen</button>
+    <button class="toggle-btn" onclick="setMode('full')">Texto completo</button>
+  </div>
+</div>
+
+<div class="content">
+  <a href="index.html" class="back-btn">← Plan de formación</a>
+
+  <!-- MODO RESUMEN -->
+  <div class="mode-summary" id="mode-summary">
+
+    <div class="idea-central">
+      <div class="idea-label">Idea central</div>
+      <p>El bautismo es una consagración real: el laico pertenece a Dios y participa del sacerdocio, la profecía y la realeza de Cristo. Toda su vida queda transferida al ámbito de lo sagrado y orientada a una misión en el mundo.</p>
+    </div>
+
+    <div class="schema-label">Esquema del texto</div>
+    <div class="schema-grid">
+      <div class="schema-item"><div class="schema-num">1</div><p>Bautismo como consagración</p></div>
+      <div class="schema-item"><div class="schema-num">2</div><p>Sacerdote, profeta y rey</p></div>
+      <div class="schema-item"><div class="schema-num">3</div><p>Primacía de la gracia</p></div>
+      <div class="schema-item"><div class="schema-num">4</div><p>El laico como signo</p></div>
+      <div class="schema-item"><div class="schema-num">5</div><p>Dignidad bautismal</p></div>
+      <div class="schema-item"><div class="schema-num">6</div><p>Misión en el mundo</p></div>
+    </div>
+
+    <div class="quotes-section">
+      <div class="schema-label">Citas para la reflexión</div>
+      <blockquote>
+        <p>«El corazón del Vaticano II es la recuperación de la conciencia del bautismo.»</p>
+        <cite>Cardenal Suenens</cite>
+      </blockquote>
+      <blockquote>
+        <p>«El bautizado queda ungido como sacerdote, profeta y rey.»</p>
+        <cite>Liturgia del Bautismo</cite>
+      </blockquote>
+      <blockquote>
+        <p>«La consagración bautismal transforma el mismo ser del hombre, introduciéndolo, por Cristo y en Cristo, en el ámbito mismo de la Trinidad.»</p>
+        <cite>Abilio de Gregorio</cite>
+      </blockquote>
+    </div>
+
+    <div class="session-guide">
+      <h4>Guía de sesiones · Para el coordinador</h4>
+      <div class="session-row"><span class="session-tag">Sesión 1</span><p>Puntos 1–2: ¿Qué es el bautismo? El laico consagrado como sacerdote, profeta y rey.</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 2</span><p>Puntos 3–4: La primacía de la gracia. El bautizado como signo vivo de Dios.</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 3</span><p>Puntos 5–6: La dignidad bautismal y su expresión concreta en el mundo.</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 4</span><p>Síntesis y coloquio final: ¿Cómo vivo yo esta consagración?</p></div>
+    </div>
+
+    <div class="coord-block" id="coordinador">
+      <div class="coord-label">Zona del coordinador</div>
+      <div class="coord-title">Preguntas para el coloquio</div>
+      <ul class="questions-list">
+        <li>¿Vivo mi bautismo como consagración real o como un dato del pasado?</li>
+        <li>¿En qué momentos concretos actúo como sacerdote, profeta o rey?</li>
+        <li>¿Qué significa para mí pertenecer a Cristo en lo cotidiano?</li>
+        <li>¿Qué signos transmito con mi vida a quienes me rodean?</li>
+        <li>¿Qué parte de mi vida no está aún entregada?</li>
+      </ul>
+      <a href="Laico_que_es_Abilio_de_Gregorio_adaptado_MoSM.pdf" class="coord-download" download>↓ Descargar texto completo en PDF</a>
+    </div>
+
+  </div>
+
+  <!-- MODO TEXTO COMPLETO -->
+  <div class="mode-full" id="mode-full">
+
+    <div class="full-text-intro">
+      Texto íntegro de Abilio de Gregorio.
+      <a href="Laico_que_es_Abilio_de_Gregorio_adaptado_MoSM.pdf" download>↓ Descargar PDF</a>
+    </div>
+
+    <div class="full-toc">
+      <h4>Índice</h4>
+      <ol>
+        <li><a href="#sec1">El bautizado es un consagrado</a></li>
+        <li><a href="#sec2">Elegido y consagrado por Cristo</a></li>
+        <li><a href="#sec3">Para cumplir una misión — la misión es el signo</a></li>
+        <li><a href="#sec4">El amor es el signo</a></li>
+        <li><a href="#sec5">El cumplimiento depende del encuentro personal con el Señor</a></li>
+        <li><a href="#sec6">En el corazón del mundo</a></li>
+      </ol>
+    </div>
+
+    <div class="text-section" id="sec1">
+      <h3>1. El bautizado es un consagrado</h3>
+      <p>Todo comienza en las aguas del bautismo. Los intentos de comprometer al laico en su santificación y en la misión evangelizadora pueden ser vanos mientras no descubra la verdadera dimensión de su condición de bautizado. El Vaticano II hizo de la espiritualidad del bautismo uno de sus goznes fundamentales. Como afirmaba el Cardenal Suenens: «El corazón del Vaticano II es la recuperación de la conciencia del bautismo».</p>
+      <p>El bautizado queda ungido como sacerdote, profeta y rey. Estas palabras no son retórica: hacen referencia a una expropiación para pasar a un ministerio de representación de lo sagrado. El bautizado queda apartado y señalado como alguien perteneciente a Dios.</p>
+      <blockquote><p>«Los bautizados son consagrados por la regeneración y la unción del Espíritu Santo, como casa espiritual y sacerdocio santo, para que, por medio de toda obra del hombre cristiano, ofrezcan sacrificios espirituales.»</p><cite>Lumen Gentium, n. 10</cite></blockquote>
+      <p>La consagración bautismal realiza una transformación del mismo ser del hombre, introduciéndolo, por Cristo y en Cristo, en el ámbito mismo de la Trinidad. El cristiano ya no se pertenece a sí mismo: pertenece a Cristo.</p>
+    </div>
+
+    <div class="text-section" id="sec2">
+      <h3>2. Elegido y consagrado por Cristo</h3>
+      <p>En el bautismo la acción de la consagración no es activa, sino pasiva. Nadie se consagra; es consagrado por el Señor. «No me habéis elegido vosotros a Mí, sino que Yo os elegí a vosotros» (Jn 15, 16). Dios no elige en atención a los méritos del elegido. No lo elige «porque» es santo, sino «para» que sea santo.</p>
+      <p>Cuando se toma conciencia de haber sido elegido «porque Él quiso», se experimenta la necesidad de Dios y de vivir de su bondad. Es la diferencia de sentirse ante Dios como acreedor o como agradecido deudor. La primacía es del ser, no del hacer. Hay que poner el centro de gravedad más en la fidelidad que en las grandes obras; más en escucharle que en hablarle.</p>
+    </div>
+
+    <div class="text-section" id="sec3">
+      <h3>3. Para cumplir una misión — la misión es el signo</h3>
+      <p>El bautizado es elegido y consagrado por Él. ¿Para qué? Para estar con Él y para ser enviado. Tienen que estar con Él para conocerlo en su ser uno con el Padre, y así poder ser testigos del misterio. Solo cuando se está rebozado en el misterio se puede mostrarlo y dar fe de él.</p>
+      <p>La persona del bautizado se convierte en significante que remite a Alguien que está más allá. El bautizado es Signo. La misión no consiste en hacer algo, sino en remitir a otro mundo. No se trata de preguntarnos ¿qué hacemos?, sino qué evocamos al hacer lo que hacemos y, por lo tanto, cómo lo hacemos.</p>
+    </div>
+
+    <div class="text-section" id="sec4">
+      <h3>4. El amor es el signo</h3>
+      <p>«Dios es amor» (1 Jn 4, 8). El amor es Signo de Dios. Quien vive animado por el amor está viviendo la consagración cristiana. Vivir el amor como camino diario de atención al otro, de comprensión, de aceptación y de valoración, eso sería hacer presente el Rostro de Dios.</p>
+      <p>Jesús habla del amor de manera concreta: compadecerse del que sufre, perdonar al que ofende, ayudar al necesitado, dar un vaso de agua. El amor no es un deseo ni una emoción efervescente; se ata a una persona para darse a ella. El aprendizaje capital del consagrado está en el «ordo amoris» de San Agustín: cómo se cultiva y cómo se manifiesta.</p>
+    </div>
+
+    <div class="text-section" id="sec5">
+      <h3>5. El cumplimiento depende del encuentro personal con el Señor</h3>
+      <p>Si la consagración del bautizado es dejarse constituir Signo del Dios vivo, entonces el cumplimiento de esa misión depende del encuentro que el consagrado haga con su Señor. Depende de cuánto nos habita el Señor que nos consagra.</p>
+      <blockquote><p>«No se comienza a ser cristiano por una decisión ética o una gran idea, sino por el encuentro con un acontecimiento, con una Persona, que da un nuevo horizonte a la vida y, con ello, una orientación decisiva.»</p><cite>Benedicto XVI, Deus caritas est, n. 1</cite></blockquote>
+      <p>Es en el silencio más personal de nuestras vidas donde sabemos si nos vamos encontrando con Él. Encontrarse con Él requiere la calma de la contemplación: un mirar silencioso y recogido ante la grandeza de lo excelente. El encuentro se contagia: las personas solo viven las ideas cuando las encuentran a su lado hechas personas.</p>
+    </div>
+
+    <div class="text-section" id="sec6">
+      <h3>6. En el corazón del mundo</h3>
+      <p>La especificidad del consagrado bautismal laico es su secularidad. La secularidad cristiana es una actitud ante el mundo nacida de la fe, capaz de abrazar a todo lo humano con el Amor con que Dios crea todas las realidades terrenas. El laico no solo lleva la Iglesia al mundo, sino que tiene la misión de llevar el clamor del mundo a la Iglesia.</p>
+      <p>La índole secular del laico demanda presencia real y operante en el mundo, haciéndose cargo por entero de los quehaceres que implica, sin evasiones. Esto exigirá formación en la competencia profesional y excelencia en su ejercicio como deber nuclear de la vocación cristiana laical.</p>
+      <blockquote><p>«Una renovación social vitalmente cristiana será obra de santidad o no existirá; y me refiero a una santidad vuelta hacia lo temporal, lo secular, lo profano.»</p><cite>Jacques Maritain</cite></blockquote>
+    </div>
+
+    <div class="coord-block" id="coordinador-full">
+      <div class="coord-label">Zona del coordinador</div>
+      <div class="coord-title">Preguntas para el coloquio</div>
+      <ul class="questions-list">
+        <li>¿Vivo mi bautismo como consagración real o como un dato del pasado?</li>
+        <li>¿En qué momentos concretos actúo como sacerdote, profeta o rey?</li>
+        <li>¿Qué significa para mí pertenecer a Cristo en lo cotidiano?</li>
+        <li>¿Qué signos transmito con mi vida a quienes me rodean?</li>
+        <li>¿Qué parte de mi vida no está aún entregada?</li>
+      </ul>
+      <a href="Laico_que_es_Abilio_de_Gregorio_adaptado_MoSM.pdf" class="coord-download" download>↓ Descargar texto completo en PDF</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Movimiento de Santa María</div>
+  <hr />
+  <p>Plan de Formación · Bienio 2026–2028 · <em>Contemplativos en la Acción</em></p>
+</footer>
+
+<script>
+  function setMode(mode) {
+    document.getElementById('mode-summary').style.display = mode === 'summary' ? 'block' : 'none';
+    document.getElementById('mode-full').style.display = mode === 'full' ? 'block' : 'none';
+    document.querySelectorAll('.toggle-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (mode==='summary'&&i===0)||(mode==='full'&&i===1));
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texto C · Contemplativos en la Acción</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root{--gold:#b8975a;--gold-light:#d4b07a;--gold-faint:#f5edd8;--navy:#1a2340;--cream:#faf7f2;--ink:#1e1e1e;--muted:#6b6555;--rule:rgba(184,151,90,.3)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--cream);color:var(--ink);font-family:'Lato',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+    nav{position:sticky;top:0;z-index:100;background:rgba(26,35,64,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+    .nav-back{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;color:rgba(255,255,255,.6);text-decoration:none;text-transform:uppercase;transition:color .25s}
+    .nav-back:hover{color:var(--gold-light)}
+    .nav-texts{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .nav-texts a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;color:rgba(255,255,255,.45);text-decoration:none;text-transform:uppercase;transition:color .25s}
+    .nav-texts a:hover,.nav-texts a.active{color:var(--gold-light)}
+    .text-header{background:var(--navy);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+    .text-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(184,151,90,.15) 0%,transparent 70%);pointer-events:none}
+    .text-badge{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1.2rem}
+    .text-header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.8rem);color:#fff;line-height:1.15;max-width:700px;margin:0 auto .8rem}
+    .text-header h1 em{font-style:italic;color:var(--gold-light)}
+    .text-author{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:rgba(255,255,255,.5);margin-top:.5rem}
+    .text-course{display:inline-block;margin-top:1.2rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.25em;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.3rem .8rem;text-transform:uppercase}
+    .mode-bar{background:#fff;border-bottom:1px solid var(--rule);padding:.9rem 2rem;display:flex;justify-content:center;align-items:center;gap:1rem;position:sticky;top:49px;z-index:90}
+    .mode-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+    .toggle-wrap{display:flex;border:1px solid var(--rule);overflow:hidden}
+    .toggle-btn{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;background:transparent;border:none;cursor:pointer;color:var(--muted);transition:all .2s}
+    .toggle-btn.active{background:var(--navy);color:#fff}
+    .content{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+    .mode-summary{display:block}.mode-full{display:none}
+    .idea-central{background:var(--navy);color:#fff;padding:2.5rem 2rem;margin-bottom:3rem;position:relative;overflow:hidden}
+    .idea-central::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 0% 100%,rgba(184,151,90,.12) 0%,transparent 70%)}
+    .idea-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;color:var(--gold-light);text-transform:uppercase;margin-bottom:.8rem}
+    .idea-central p{color:rgba(255,255,255,.85);font-size:1.05rem;margin:0;line-height:1.7;position:relative}
+    .schema-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}
+    .schema-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+    .schema-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+    .schema-item{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--gold);padding:1.2rem 1.4rem;display:flex;align-items:flex-start;gap:1rem}
+    .schema-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold-faint);line-height:1;flex-shrink:0}
+    .schema-item p{font-size:.9rem;color:var(--navy);margin:0;font-weight:400;line-height:1.4}
+    .quotes-section{margin-bottom:3rem}
+    blockquote{border-left:3px solid var(--gold);padding:1.2rem 1.5rem;background:var(--gold-faint);margin-bottom:1rem}
+    blockquote p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--navy);margin:0 0 .4rem;line-height:1.5}
+    blockquote cite{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase}
+    .session-guide{background:#fff;border:1px solid var(--rule);padding:1.8rem 2rem;margin-bottom:3rem}
+    .session-guide h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+    .session-row{display:flex;gap:1rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+    .session-row:last-child{border-bottom:none}
+    .session-tag{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.1em;color:var(--gold);background:var(--gold-faint);padding:.2rem .6rem;flex-shrink:0}
+    .session-row p{font-size:.88rem;color:var(--muted);margin:0}
+    .coord-block{background:var(--navy);padding:3rem 2rem;margin-top:3rem;position:relative;overflow:hidden}
+    .coord-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(184,151,90,.1) 0%,transparent 60%)}
+    .coord-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold-light);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;position:relative}
+    .coord-label::after{content:'';flex:1;height:1px;background:rgba(184,151,90,.25)}
+    .coord-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;font-weight:300;margin-bottom:1.5rem;position:relative}
+    .questions-list{list-style:none;padding:0;position:relative}
+    .questions-list li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.75);font-size:.98rem;display:flex;align-items:baseline;gap:.8rem}
+    .questions-list li:last-child{border-bottom:none}
+    .questions-list li::before{content:'◦';color:var(--gold);flex-shrink:0}
+    .coord-download{margin-top:2rem;display:inline-flex;align-items:center;gap:.6rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.6rem 1.2rem;transition:all .25s;position:relative}
+    .coord-download:hover{background:var(--gold);color:var(--navy)}
+    .full-text-intro{background:var(--gold-faint);border:1px solid var(--gold);padding:1.2rem 1.6rem;margin-bottom:2.5rem;font-size:.9rem;color:var(--navy)}
+    .full-text-intro a{color:var(--gold)}
+    .full-toc{margin-bottom:2.5rem}
+    .full-toc h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+    .full-toc ol{padding-left:1.2rem}
+    .full-toc li{margin-bottom:.4rem}
+    .full-toc a{color:var(--navy);font-size:.9rem;text-decoration:none;transition:color .2s}
+    .full-toc a:hover{color:var(--gold)}
+    .text-section{margin-bottom:3rem}
+    .text-section h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--navy);font-weight:600;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+    .text-section p{color:var(--muted);margin-bottom:1rem;font-size:.98rem}
+    .text-section blockquote{margin:1.5rem 0}
+    .back-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule);padding:.5rem 1rem;margin-bottom:2rem;transition:all .25s}
+    .back-btn:hover{border-color:var(--gold)}
+    footer{background:#0f1628;color:rgba(255,255,255,.35);text-align:center;padding:2.5rem 2rem;font-size:.82rem}
+    .footer-logo{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);letter-spacing:.2em;margin-bottom:.4rem}
+    footer hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:1rem auto;max-width:160px}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">← Volver al plan</a>
+  <div class="nav-texts">
+    <a href="texto-a.html">A · Abilio de Gregorio</a>
+    <a href="texto-b.html">B · Santiago Arellano</a>
+    <a href="texto-c.html" class="active">C · Elías Royón</a>
+    <a href="texto-d.html">D · Andrés Jiménez</a>
+  </div>
+</nav>
+
+<div class="text-header">
+  <div class="text-badge">Texto C · La espiritualidad</div>
+  <h1>Una espiritualidad ignaciana:<br /><em>Contemplativos en la Acción</em></h1>
+  <div class="text-author">P. Elías Royón, SJ</div>
+  <div class="text-course">Curso 2027 – 2028</div>
+</div>
+
+<div class="mode-bar">
+  <span class="mode-label">Modo de lectura</span>
+  <div class="toggle-wrap">
+    <button class="toggle-btn active" onclick="setMode('summary')">Resumen</button>
+    <button class="toggle-btn" onclick="setMode('full')">Texto completo</button>
+  </div>
+</div>
+
+<div class="content">
+  <a href="index.html" class="back-btn">← Plan de formación</a>
+
+  <!-- MODO RESUMEN -->
+  <div class="mode-summary" id="mode-summary">
+
+    <div class="idea-central">
+      <div class="idea-label">Idea central</div>
+      <p>Ser contemplativos en la acción es buscar y hallar a Dios en todas las cosas. No es un método de oración, sino una actitud orante, una concepción de la vida y un talante para la misión que encaja plenamente con la vocación de un instituto secular en el mundo.</p>
+    </div>
+
+    <div class="schema-label">Esquema del texto</div>
+    <div class="schema-grid">
+      <div class="schema-item"><div class="schema-num">1</div><p>La experiencia de san Ignacio</p></div>
+      <div class="schema-item"><div class="schema-num">2</div><p>Dios, mundo y persona</p></div>
+      <div class="schema-item"><div class="schema-num">3</div><p>Buscar y hallar a Dios en todo</p></div>
+      <div class="schema-item"><div class="schema-num">4</div><p>Afectos desordenados</p></div>
+      <div class="schema-item"><div class="schema-num">5</div><p>Hacerse discípulo</p></div>
+      <div class="schema-item"><div class="schema-num">6</div><p>El examen ignaciano</p></div>
+    </div>
+
+    <div class="quotes-section">
+      <div class="schema-label">Citas para la reflexión</div>
+      <blockquote>
+        <p>«No hay que huir del mundo para encontrar a Dios. La acción apostólica, en esta espiritualidad, es encuentro con Dios.»</p>
+        <cite>Elías Royón, SJ</cite>
+      </blockquote>
+      <blockquote>
+        <p>«Contemplativos también en la acción»: contemplativos en la oración y contemplativos también en la acción.»</p>
+        <cite>P. Jerónimo Nadal, SJ</cite>
+      </blockquote>
+      <blockquote>
+        <p>«Los afectos desordenados son las distracciones en el ser contemplativos en la acción.»</p>
+        <cite>Elías Royón, SJ</cite>
+      </blockquote>
+    </div>
+
+    <div class="session-guide">
+      <h4>Guía de sesiones · Para el coordinador</h4>
+      <div class="session-row"><span class="session-tag">Sesión 1</span><p>Puntos 1–2: La conversión de Ignacio y los tres fundamentos ignacianos: Dios, mundo, persona.</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 2</span><p>Punto 3: Buscar y hallar a Dios en todas las cosas. ¿Qué significa en la práctica?</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 3</span><p>Punto 4: Los afectos desordenados. Examen personal y grupal.</p></div>
+      <div class="session-row"><span class="session-tag">Sesión 4</span><p>Puntos 5–6: Hacerse discípulo y el examen ignaciano como herramienta diaria.</p></div>
+    </div>
+
+    <div class="coord-block" id="coordinador">
+      <div class="coord-label">Zona del coordinador</div>
+      <div class="coord-title">Preguntas para el coloquio</div>
+      <ul class="questions-list">
+        <li>¿Dónde y cuándo descubro concretamente a Dios en mi vida cotidiana?</li>
+        <li>¿Qué afectos desordenados me impiden verlo y estar disponible?</li>
+        <li>¿Cómo vivo habitualmente en su presencia a lo largo del día?</li>
+        <li>¿Qué papel ocupa la oración en mi vida y cómo la nutro?</li>
+        <li>¿Hago el examen de conciencia? ¿De qué modo me ayuda?</li>
+      </ul>
+      <a href="Contemplativos_en_acción_Elias_Royón_2021_adaptado_MoSM.pdf" class="coord-download" download>↓ Descargar texto completo en PDF</a>
+    </div>
+
+  </div>
+
+  <!-- MODO TEXTO COMPLETO -->
+  <div class="mode-full" id="mode-full">
+
+    <div class="full-text-intro">
+      Plática del P. Elías Royón, SJ en el retiro espiritual de los Cruzados de Santa María, Región Centro. Madrid, 20–21 de febrero de 2021.
+      <a href="Contemplativos_en_acción_Elias_Royón_2021_adaptado_MoSM.pdf" download>↓ Descargar PDF</a>
+    </div>
+
+    <div class="full-toc">
+      <h4>Índice</h4>
+      <ol>
+        <li><a href="#sec1">La experiencia de san Ignacio</a></li>
+        <li><a href="#sec2">Fundamentos en la espiritualidad ignaciana</a></li>
+        <li><a href="#sec3">¿Cómo hacerse contemplativo en la acción?</a></li>
+        <li><a href="#sec4">Síntesis final</a></li>
+      </ol>
+    </div>
+
+    <div class="text-section" id="sec1">
+      <h3>1. La experiencia de san Ignacio</h3>
+      <p>Encontrar a Dios presente en todo — en nuestro mundo, en cada situación, en cada circunstancia, en cada uno de nosotros y de nuestra historia — es algo central en el itinerario pascual ignaciano. Su fundamento teológico es la encarnación y la resurrección: Dios, encarnado en Jesús de Nazaret, ha hecho posible, por su resurrección, que su presencia en el mundo continúe a lo largo de la historia.</p>
+      <p>Ignacio comenzó su conversión con un proyecto de vida eremítica: penitencia, retiro, ir a Jerusalén. Un proyecto «suyo» para toda la vida, no contrastado con la voluntad de Dios. En Manresa tendrá lugar su segunda conversión — un largo y doloroso proceso de purificación — que lo llevaría a la visión del Cardoner: «todas las cosas le parecían nuevas». Desde ese momento su vida será apostólica y misionera. Ignacio se convierte al mundo.</p>
+      <blockquote><p>«No hay que huir del mundo para encontrar a Dios. La acción apostólica no debe ser ocasión de gastar baterías, de descapitalizarse.»</p><cite>Elías Royón, SJ</cite></blockquote>
+      <p>La frase «contemplativos en la acción» no es propia de san Ignacio, sino del padre Nadal, su discípulo. En san Ignacio la frase es «buscar y hallar a Dios en todas las cosas». No es un método para orar, sino una actitud orante, una concepción de la vida, un talante para la misión.</p>
+    </div>
+
+    <div class="text-section" id="sec2">
+      <h3>2. Fundamentos en la espiritualidad ignaciana</h3>
+      <p>Tiene dos núcleos en los Ejercicios: el «Principio y fundamento» y la «Contemplación para alcanzar amor». Y tres elementos: la concepción ignaciana del mundo, de Dios y del hombre.</p>
+      <p><strong>El mundo:</strong> Ignacio entiende el mundo como espacio de búsqueda y encuentro con Dios. «Tanto amó Dios al mundo que envió a su Hijo» (Jn 3, 16). No es posible encontrar a Dios fuera de este mundo: sería una evasión. Es el lugar donde podemos realizar su voluntad y nuestra vocación de criaturas.</p>
+      <p><strong>Dios:</strong> Es el Dios mayor, siempre mayor, un misterio que vamos descubriendo poco a poco sin alcanzarlo definitivamente nunca. Es el único absoluto; todo lo demás es relativo, referido a Dios. De ahí nace nuestra actitud de indiferencia ignaciana: libertad interior y disponibilidad.</p>
+      <p><strong>El hombre:</strong> Es un ser vocacional al que Dios da una misión: «El hombre es creado para alabar, hacer reverencia y servir» (EE 23). El pecado es lo que trastorna la armonía entre Dios, el mundo y el hombre. La tarea del contemplativo en la acción es una tarea de reconciliación.</p>
+      <p>La novedad de esta espiritualidad es que no solo los lugares sagrados son espacios de encuentro con Dios, sino que todo es medio divino: las relaciones interpersonales, el trabajo, la vida cotidiana, cualquier situación y circunstancia histórica.</p>
+    </div>
+
+    <div class="text-section" id="sec3">
+      <h3>3. ¿Cómo hacerse contemplativo en la acción?</h3>
+      <p><strong>Liberarse de los afectos desordenados.</strong> Supone un proceso continuo de conversión e ir siendo cada vez más indiferente y disponible. Los afectos desordenados quiebran la armonía entre Dios, el mundo y mi persona. Me busco en los afectos desordenados porque no busco a Dios sino las cosas para mí. Son las distracciones en el ser contemplativos en la acción.</p>
+      <p><strong>Hacerse discípulo.</strong> «Conocimiento interno del Señor para más amarle y más seguirle» (EE 104). Es un conocimiento interpersonal, una relación afectiva con el Señor. Dejarse afectar por su palabra y sus gestos. Vivir con el Maestro, del Maestro, como el Maestro: «Vivo yo, ya no yo, es Cristo quien vive en mí» (Gál 2, 20).</p>
+      <p><strong>La oración contemplativa.</strong> La frase de Nadal completa es «contemplativos también en la acción». Es decir: contemplativos en la oración y contemplativos también en la acción. Hay que serlo en la oración para poder serlo en la acción. Hace falta tiempo y espacio de contemplación de los misterios de la vida de Jesús.</p>
+      <p><strong>La abnegación.</strong> Para san Ignacio es fundamental. Abnegación del corazón: «salir de nuestro propio amor, querer e interés» (EE 189). Vaciar nuestro yo, no vaciar nuestro corazón. Está relacionada con la pureza de intención: ¿por qué hago esto? Para servir al Señor, para complacer su divina voluntad.</p>
+      <p><strong>El examen ignaciano.</strong> No tanto un tiempo o espacio concreto, sino una actitud de sinceridad con Dios, un estar atentos a Él en nuestras vidas. En el examen vamos descubriendo cómo actúa Dios en nuestra vida mediante llamadas y sugerencias, y cuál es nuestra respuesta. Nos confronta con nuestros afectos desordenados y nos pregunta: ¿qué quiere Dios de mí, aquí y ahora?</p>
+    </div>
+
+    <div class="text-section" id="sec4">
+      <h3>4. Síntesis final</h3>
+      <blockquote>
+        <p>«Todos se esfuercen en tener, en primer lugar, intención recta no solamente del estado de su vida pero aún de todas cosas particulares, siempre pretendiendo en ellas servir y complacer a la divina bondad por sí misma… A él en todas amando, y a todas en él conforme a su santísima y divina voluntad.»</p>
+        <cite>Constituciones de la Compañía de Jesús, n. 288</cite>
+      </blockquote>
+      <p>Ser contemplativo en la acción supone una tarea de toda la vida: una conversión continua que lleva al conocimiento interno de Jesús, a esa relación afectiva con Él, para más amarlo y más seguirlo. Esto necesita tiempo y espacio de oración concreta, contemplando los misterios de la vida de Jesús, y exige abnegación y la práctica del examen de conciencia.</p>
+    </div>
+
+    <div class="coord-block">
+      <div class="coord-label">Zona del coordinador</div>
+      <div class="coord-title">Preguntas para el coloquio</div>
+      <ul class="questions-list">
+        <li>¿Dónde y cuándo descubro concretamente a Dios en mi vida cotidiana?</li>
+        <li>¿Qué afectos desordenados me impiden verlo y estar disponible?</li>
+        <li>¿Cómo vivo habitualmente en su presencia a lo largo del día?</li>
+        <li>¿Qué papel ocupa la oración en mi vida y cómo la nutro?</li>
+        <li>¿Hago el examen de conciencia? ¿De qué modo me ayuda?</li>
+      </ul>
+      <a href="Contemplativos_en_acción_Elias_Royón_2021_adaptado_MoSM.pdf" class="coord-download" download>↓ Descargar texto completo en PDF</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Movimiento de Santa María</div>
+  <hr />
+  <p>Plan de Formación · Bienio 2026–2028 · <em>Contemplativos en la Acción</em></p>
+</footer>
+
+<script>
+  function setMode(mode) {
+    document.getElementById('mode-summary').style.display = mode === 'summary' ? 'block' : 'none';
+    document.getElementById('mode-full').style.display = mode === 'full' ? 'block' : 'none';
+    document.querySelectorAll('.toggle-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (mode==='summary'&&i===0)||(mode==='full'&&i===1));
+    });
+  }
+</script>
+</body>
+</html>

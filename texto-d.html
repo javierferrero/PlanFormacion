@@ -1,285 +1,320 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Texto D · El legado del P. Morales</title>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texto D · El legado del P. Morales y el Magisterio</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     :root{--gold:#b8975a;--gold-light:#d4b07a;--gold-faint:#f5edd8;--navy:#1a2340;--cream:#faf7f2;--ink:#1e1e1e;--muted:#6b6555;--rule:rgba(184,151,90,.3)}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
     body{background:var(--cream);color:var(--ink);font-family:'Lato',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
-    nav{position:sticky;top:0;z-index:100;background:rgba(26,35,64,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
-    .nav-back{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;color:rgba(255,255,255,.6);text-decoration:none;text-transform:uppercase;transition:color .25s}
-    .nav-back:hover{color:var(--gold-light)}
-    .nav-texts{display:flex;gap:1.2rem;flex-wrap:wrap}
-    .nav-texts a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;color:rgba(255,255,255,.45);text-decoration:none;text-transform:uppercase;transition:color .25s}
-    .nav-texts a:hover,.nav-texts a.active{color:var(--gold-light)}
+    nav{position:sticky;top:0;z-index:100;background:rgba(26,35,64,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:.9rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .nav-back{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.18em;color:rgba(255,255,255,.6);text-decoration:none;text-transform:uppercase;transition:color .25s}.nav-back:hover{color:var(--gold-light)}
+    .nav-links{display:flex;gap:1.5rem}.nav-links a{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;color:rgba(255,255,255,.5);text-decoration:none;text-transform:uppercase;transition:color .25s}.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+    .nav-coor{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.3rem .8rem;text-decoration:none}.nav-coor:hover{background:rgba(184,151,90,.12)}
     .text-header{background:var(--navy);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
-    .text-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(184,151,90,.15) 0%,transparent 70%);pointer-events:none}
-    .text-badge{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1.2rem}
-    .text-header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.8rem);color:#fff;line-height:1.15;max-width:700px;margin:0 auto .8rem}
+    .text-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(184,151,90,.15) 0%,transparent 70%);pointer-events:none}
+    .text-header-eyebrow{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1.2rem}
+    .text-header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,5vw,4rem);color:#fff;line-height:1.15;max-width:700px;margin:0 auto .8rem}
     .text-header h1 em{font-style:italic;color:var(--gold-light)}
-    .text-author{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:rgba(255,255,255,.5);margin-top:.5rem}
-    .text-course{display:inline-block;margin-top:1.2rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.25em;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.3rem .8rem;text-transform:uppercase}
-    .mode-bar{background:#fff;border-bottom:1px solid var(--rule);padding:.9rem 2rem;display:flex;justify-content:center;align-items:center;gap:1rem;position:sticky;top:49px;z-index:90}
-    .mode-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
-    .toggle-wrap{display:flex;border:1px solid var(--rule);overflow:hidden}
-    .toggle-btn{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;background:transparent;border:none;cursor:pointer;color:var(--muted);transition:all .2s}
-    .toggle-btn.active{background:var(--navy);color:#fff}
-    .content{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
-    .mode-summary{display:block}.mode-full{display:none}
-    .idea-central{background:var(--navy);color:#fff;padding:2.5rem 2rem;margin-bottom:3rem;position:relative;overflow:hidden}
-    .idea-central::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 0% 100%,rgba(184,151,90,.12) 0%,transparent 70%)}
-    .idea-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;color:var(--gold-light);text-transform:uppercase;margin-bottom:.8rem}
-    .idea-central p{color:rgba(255,255,255,.85);font-size:1.05rem;margin:0;line-height:1.7;position:relative}
-    .schema-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}
-    .schema-label::after{content:'';flex:1;height:1px;background:var(--rule)}
-    .schema-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
-    .schema-item{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--gold);padding:1.2rem 1.4rem;display:flex;align-items:flex-start;gap:1rem}
-    .schema-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold-faint);line-height:1;flex-shrink:0}
-    .schema-item p{font-size:.9rem;color:var(--navy);margin:0;font-weight:400;line-height:1.4}
-    .quotes-section{margin-bottom:3rem}
-    blockquote{border-left:3px solid var(--gold);padding:1.2rem 1.5rem;background:var(--gold-faint);margin-bottom:1rem}
-    blockquote p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--navy);margin:0 0 .4rem;line-height:1.5}
-    blockquote cite{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase}
-    .session-guide{background:#fff;border:1px solid var(--rule);padding:1.8rem 2rem;margin-bottom:3rem}
-    .session-guide h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
-    .session-row{display:flex;gap:1rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--rule)}
-    .session-row:last-child{border-bottom:none}
-    .session-tag{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.1em;color:var(--gold);background:var(--gold-faint);padding:.2rem .6rem;flex-shrink:0}
-    .session-row p{font-size:.88rem;color:var(--muted);margin:0}
-    .coord-block{background:var(--navy);padding:3rem 2rem;margin-top:3rem;position:relative;overflow:hidden}
-    .coord-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(184,151,90,.1) 0%,transparent 60%)}
-    .coord-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold-light);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;position:relative}
-    .coord-label::after{content:'';flex:1;height:1px;background:rgba(184,151,90,.25)}
-    .coord-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;font-weight:300;margin-bottom:1.5rem;position:relative}
-    .questions-list{list-style:none;padding:0;position:relative}
-    .questions-list li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.75);font-size:.98rem;display:flex;align-items:baseline;gap:.8rem}
-    .questions-list li:last-child{border-bottom:none}
-    .questions-list li::before{content:'◦';color:var(--gold);flex-shrink:0}
-    .coord-download{margin-top:2rem;display:inline-flex;align-items:center;gap:.6rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,151,90,.4);padding:.6rem 1.2rem;transition:all .25s;position:relative}
-    .coord-download:hover{background:var(--gold);color:var(--navy)}
-    .appendix-note{background:var(--gold-faint);border:1px solid var(--gold);border-left:4px solid var(--gold);padding:1.4rem 1.8rem;margin-top:3rem;margin-bottom:1rem}
-    .appendix-note h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem}
-    .appendix-note p{font-size:.88rem;color:var(--navy);margin:0}
-    .full-text-intro{background:var(--gold-faint);border:1px solid var(--gold);padding:1.2rem 1.6rem;margin-bottom:2.5rem;font-size:.9rem;color:var(--navy)}
-    .full-text-intro a{color:var(--gold)}
-    .full-toc{margin-bottom:2.5rem}
-    .full-toc h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
-    .full-toc ol{padding-left:1.2rem}
-    .full-toc li{margin-bottom:.4rem}
-    .full-toc a{color:var(--navy);font-size:.9rem;text-decoration:none;transition:color .2s}
-    .full-toc a:hover{color:var(--gold)}
-    .text-section{margin-bottom:3rem}
-    .text-section h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--navy);font-weight:600;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
-    .text-section p{color:var(--muted);margin-bottom:1rem;font-size:.98rem}
-    .text-section blockquote{margin:1.5rem 0}
-    .back-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule);padding:.5rem 1rem;margin-bottom:2rem;transition:all .25s}
-    .back-btn:hover{border-color:var(--gold)}
-    footer{background:#0f1628;color:rgba(255,255,255,.35);text-align:center;padding:2.5rem 2rem;font-size:.82rem}
-    .footer-logo{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);letter-spacing:.2em;margin-bottom:.4rem}
-    footer hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:1rem auto;max-width:160px}
+    .text-header-author{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:rgba(255,255,255,.5);margin-top:.5rem}
+    .text-header-idea{max-width:580px;margin:2rem auto 0;font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7;font-style:italic;border-top:1px solid rgba(184,151,90,.25);padding-top:1.5rem}
+    .mode-toggle{max-width:860px;margin:0 auto;padding:2rem 2rem 0;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .mode-toggle span{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+    .toggle-btn{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;padding:.5rem 1.2rem;border:1px solid var(--rule);background:transparent;cursor:pointer;transition:all .25s;color:var(--muted)}
+    .toggle-btn.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}.toggle-btn:hover:not(.active){border-color:var(--gold);color:var(--gold)}
+    .content-area{max-width:860px;margin:0 auto;padding:3rem 2rem 6rem}
+    .schema-title{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}.schema-title::after{content:'';flex:1;height:1px;background:var(--rule)}
+    .schema-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-bottom:3rem}
+    .schema-item{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--gold);padding:1.5rem 1.4rem}
+    .schema-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold-faint);line-height:1;margin-bottom:.3rem}
+    .schema-item h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.1rem;color:var(--navy);margin-bottom:.4rem}
+    .schema-item p{font-size:.88rem;color:var(--muted);margin:0;line-height:1.6}
+    .quotes-block{margin-bottom:3rem}
+    .quote-item{border-left:3px solid var(--gold);padding:1rem 1.5rem;margin-bottom:1rem;background:#fff}
+    .quote-item blockquote{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--navy);line-height:1.5;margin-bottom:.4rem}
+    .quote-item cite{font-size:.78rem;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.1em;font-style:normal}
+    .full-mode{display:none}.full-mode.visible{display:block}.summary-mode.hidden{display:none}
+    .download-bar{background:var(--navy);padding:1.2rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+    .download-bar p{color:rgba(255,255,255,.6);font-size:.88rem;margin:0}
+    .download-bar a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:.6rem 1.2rem;text-decoration:none;transition:all .25s;white-space:nowrap}.download-bar a:hover{background:var(--gold);color:var(--navy)}
+    .accordion{margin-bottom:1px}
+    .accordion-header{background:#fff;border:1px solid var(--rule);padding:1.2rem 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background .2s}.accordion-header:hover{background:var(--gold-faint)}.accordion-header.open{background:var(--navy);border-color:var(--navy)}
+    .accordion-header h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--navy);margin:0}.accordion-header.open h3{color:#fff}
+    .accordion-icon{font-size:1.2rem;color:var(--gold);flex-shrink:0;transition:transform .3s}.accordion-header.open .accordion-icon{transform:rotate(45deg);color:var(--gold-light)}
+    .accordion-body{display:none;background:#fff;border:1px solid var(--rule);border-top:none;padding:1.8rem 1.8rem 2rem}.accordion-body.open{display:block}
+    .accordion-body p{color:var(--muted);font-size:.98rem;margin-bottom:1rem;line-height:1.8}.accordion-body p:last-child{margin-bottom:0}
+    /* Apéndice colapsable */
+    .apendice-toggle{background:var(--gold-faint);border:1px solid var(--gold);padding:1.2rem 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-top:2rem;gap:1rem}
+    .apendice-toggle h3{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);margin:0}
+    .apendice-toggle span{font-size:1.2rem;color:var(--gold)}
+    .apendice-body{display:none;background:#fff;border:1px solid var(--gold);border-top:none;padding:1.8rem;font-size:.9rem;color:var(--muted);line-height:1.8}
+    .apendice-body.open{display:block}
+    .apendice-body h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);margin:1.2rem 0 .5rem}
+    .apendice-body p{margin-bottom:.9rem}
+    .coordinator-zone{margin-top:4rem;background:var(--navy);padding:3rem 2.5rem;position:relative;overflow:hidden}
+    .coordinator-zone::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(184,151,90,.12) 0%,transparent 70%);pointer-events:none}
+    .coor-label{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}.coor-label::after{content:'';flex:1;height:1px;background:rgba(184,151,90,.25)}
+    .coordinator-zone h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);color:#fff;margin-bottom:2rem}.coordinator-zone h2 em{color:var(--gold-light);font-style:italic}
+    .coor-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem}@media(max-width:620px){.coor-grid{grid-template-columns:1fr}}
+    .coor-block h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1rem}
+    .coor-block ul{list-style:none;padding:0}.coor-block li{color:rgba(255,255,255,.65);font-size:.92rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:.7rem;line-height:1.5}.coor-block li::before{content:'✦';color:var(--gold);font-size:.6rem;flex-shrink:0;margin-top:.4rem}
+    .sessions-block{margin-bottom:2.5rem}.sessions-block h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1rem}
+    .session-row{display:flex;gap:1rem;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.07);align-items:flex-start}
+    .session-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--gold);line-height:1;min-width:2rem;flex-shrink:0}
+    .session-content{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.6}.session-content strong{color:rgba(255,255,255,.9);display:block;margin-bottom:.2rem}
+    .questions-block h4{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1.2rem}
+    .question-item{background:rgba(255,255,255,.05);border-left:3px solid var(--gold);padding:.9rem 1.2rem;margin-bottom:.7rem}.question-item p{color:rgba(255,255,255,.75);font-size:.95rem;margin:0;font-style:italic}
+    .text-footer-nav{max-width:860px;margin:0 auto;padding:2rem 2rem 4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--rule)}
+    .text-footer-nav a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .25s}.text-footer-nav a:hover{color:var(--gold)}.text-footer-nav .next-link{color:var(--gold)}
+    footer{background:#0f1628;color:rgba(255,255,255,.35);text-align:center;padding:2rem;font-size:.8rem;letter-spacing:.05em}
+    .footer-logo{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);letter-spacing:.2em;margin-bottom:.4rem}footer hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:.8rem auto;max-width:160px}
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-back">← Volver al plan</a>
-  <div class="nav-texts">
-    <a href="texto-a.html">A · Abilio de Gregorio</a>
-    <a href="texto-b.html">B · Santiago Arellano</a>
-    <a href="texto-c.html">C · Elías Royón</a>
-    <a href="texto-d.html" class="active">D · Andrés Jiménez</a>
+  <a href="index.html#textos" class="nav-back">← Plan de Formación</a>
+  <div class="nav-links">
+    <a href="texto-a.html">A</a><a href="texto-b.html">B</a>
+    <a href="texto-c.html">C</a><a href="texto-d.html" class="active">D</a>
   </div>
+  <a href="#coordinador" class="nav-coor">Para coordinadores</a>
 </nav>
 
 <div class="text-header">
-  <div class="text-badge">Texto D · El carisma</div>
+  <div class="text-header-eyebrow">Texto D · Curso 2027–2028 · El carisma</div>
   <h1>El legado del P. Morales<br /><em>y el Magisterio de la Iglesia</em></h1>
-  <div class="text-author">Andrés Jiménez</div>
-  <div class="text-course">Curso 2027 – 2028</div>
+  <p class="text-header-author">Andrés Jiménez</p>
+  <p class="text-header-idea">El P. Morales llama a los bautizados a transformar el mundo desde dentro. Es la hora de los laicos: una urgencia profética de nuestro tiempo que el carisma del Movimiento hace propia.</p>
 </div>
 
-<div class="mode-bar">
-  <span class="mode-label">Modo de lectura</span>
-  <div class="toggle-wrap">
-    <button class="toggle-btn active" onclick="setMode('summary')">Resumen</button>
-    <button class="toggle-btn" onclick="setMode('full')">Texto completo</button>
-  </div>
+<div class="mode-toggle" style="justify-content:center">
+
+  <button class="toggle-btn active" id="btn-summary" onclick="setMode('summary')">Esquema</button>
+  <button class="toggle-btn" id="btn-full" onclick="setMode('full')">Texto completo</button>
 </div>
 
-<div class="content">
-  <a href="index.html" class="back-btn">← Plan de formación</a>
+<div class="content-area">
 
-  <!-- MODO RESUMEN -->
-  <div class="mode-summary" id="mode-summary">
-
-    <div class="idea-central">
-      <div class="idea-label">Idea central</div>
-      <p>El P. Morales llama a los bautizados a transformar el mundo desde dentro. La raíz de todo impulso movilizador es el tesoro oculto del Bautismo. La santidad laical no es un cristianismo cómodo sino un cristianismo de trincheras que exige presencia audaz en todos los ámbitos de la vida.</p>
-    </div>
-
-    <div class="schema-label">Esquema del texto</div>
+  <div class="summary-mode" id="summary-mode">
+    <div class="schema-title">Esquema del texto</div>
     <div class="schema-grid">
-      <div class="schema-item"><div class="schema-num">1</div><p>Dios está en tus manos</p></div>
-      <div class="schema-item"><div class="schema-num">2</div><p>La hora de los laicos</p></div>
-      <div class="schema-item"><div class="schema-num">3</div><p>La secularidad</p></div>
-      <div class="schema-item"><div class="schema-num">4</div><p>Santidad laical</p></div>
-      <div class="schema-item"><div class="schema-num">5</div><p>Frente al laicismo</p></div>
-      <div class="schema-item"><div class="schema-num">6</div><p>El carisma del P. Morales</p></div>
+      <div class="schema-item">
+        <div class="schema-num">1</div>
+        <h3>Dios está en tus manos</h3>
+        <p>El relato del coolie indio: el trabajo cotidiano como cooperación con la obra creadora de Dios. La fe que se conecta con la vida.</p>
+      </div>
+      <div class="schema-item">
+        <div class="schema-num">2</div>
+        <h3>La hora de los laicos</h3>
+        <p>El P. Morales recoge el grito de Pío XII y lo convierte en vocación: movilización total del laicado católico para salvar al mundo de la ruina.</p>
+      </div>
+      <div class="schema-item">
+        <div class="schema-num">3</div>
+        <h3>La secularidad</h3>
+        <p>El laico contribuye a la salvación del mundo desde dentro, a modo de fermento. Su índole secular es su modo específico de ser Iglesia en el mundo.</p>
+      </div>
+      <div class="schema-item">
+        <div class="schema-num">4</div>
+        <h3>Santidad laical</h3>
+        <p>La vida cotidiana —familia, trabajo, profesión— es el instrumento habitual de la santificación laical. No es un cristianismo cómodo: es un cristianismo de trincheras.</p>
+      </div>
+      <div class="schema-item">
+        <div class="schema-num">5</div>
+        <h3>Frente al laicismo</h3>
+        <p>El laicismo avanza porque los buenos no hacen nada. Se necesitan laicos capaces de responder con lucidez y convicción desde todos los ámbitos de la vida pública.</p>
+      </div>
+      <div class="schema-item">
+        <div class="schema-num">6</div>
+        <h3>El carisma del P. Morales</h3>
+        <p>El P. Morales sólo tuvo una vocación: animar a la santidad. Su obra es la puesta en valor de la vocación original del bautismo, descubierta para el mundo de hoy.</p>
+      </div>
     </div>
 
-    <div class="quotes-section">
-      <div class="schema-label">Citas para la reflexión</div>
-      <blockquote>
-        <p>«Dios está en tus manos. Cuando mañana vayas a trabajar, cualquier cosa que hagas en tu trabajo de cada día está cooperando con la obra creadora de Dios.»</p>
-        <cite>Predicador indio citado por Douglas Hyde</cite>
-      </blockquote>
-      <blockquote>
-        <p>«Es la hora de los laicos.»</p>
-        <cite>Pío XII — recogido por el P. Tomás Morales</cite>
-      </blockquote>
-      <blockquote>
-        <p>«Cuando un bautizado toma conciencia de su fe, se hace misionero.»</p>
-        <cite>San Juan Pablo II</cite>
-      </blockquote>
+    <div class="schema-title">Citas destacadas</div>
+    <div class="quotes-block">
+      <div class="quote-item">
+        <blockquote>«Es la hora de los laicos.»</blockquote>
+        <cite>Pío XII — citado por el P. Tomás Morales</cite>
+      </div>
+      <div class="quote-item">
+        <blockquote>«El mundo está destinado a dar gloria a Dios.»</blockquote>
+        <cite>Juan Pablo II, Christifideles laici, n. 15</cite>
+      </div>
+      <div class="quote-item">
+        <blockquote>«Cuando un bautizado toma conciencia de su fe, se hace misionero.»</blockquote>
+        <cite>San Juan Pablo II en Javier, 1982</cite>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-mode" id="full-mode">
+    <div class="download-bar">
+      <p>Texto completo de Andrés Jiménez — disponible para descarga</p>
+      <a href="ES_LA_HORA_DE_LOS_LAICOS_Andrés_Jiménez_adaptado_MoSM.pdf" download>⬇ Descargar PDF</a>
     </div>
 
-    <div class="session-guide">
-      <h4>Guía de sesiones · Para el coordinador</h4>
-      <div class="session-row"><span class="session-tag">Sesión 1</span><p>Puntos 1–2: «Dios está en tus manos.» La llamada profética del P. Morales a la movilización del laicado.</p></div>
-      <div class="session-row"><span class="session-tag">Sesión 2</span><p>Punto 3: La secularidad cristiana. Distinción entre secularidad y laicismo.</p></div>
-      <div class="session-row"><span class="session-tag">Sesión 3</span><p>Punto 4: Santidad laical. La fe en los entresijos de la vida ordinaria.</p></div>
-      <div class="session-row"><span class="session-tag">Sesión 4</span><p>Puntos 5–6: Frente al laicismo. El carisma del P. Morales hoy.</p></div>
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <h3>1 · Dios está en tus manos</h3>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Douglas Hyde, reconocido líder comunista convertido al catolicismo, narra la escena de un viejo coolie indio que escucha predicar: «Si tú estás bautizado, Él está en tus manos. Cuando mañana vayas a trabajar, cuando lleves tu carrito, cuando estés cavando tu zanja; cualquier cosa que hagas en tu trabajo de cada día está cooperando con la obra creadora de Dios. Dios está en tus manos».</p>
+        <p>El viejo se miraba las manos desgastadas, callosas y retorcidas, con sus uñas rotas, casi con terror. Algo tremendo le estaba sucediendo. Se podía ver cómo la verdad penetraba en su conciencia. Su cristianismo de repente había dado un significado a su trabajo.</p>
+        <p>Por supuesto, este es el modo como un cristiano debe ver su trabajo. Pero no es de hecho como los cristianos lo ven. Los valores de la misa del domingo deberían trasladarse a la fábrica, a la oficina, a la junta directiva o al escaño en el Parlamento. Pero normalmente no es así. Y por eso su trabajo a menudo se hace insoportable por falta de sentido.</p>
+      </div>
     </div>
 
-    <div class="coord-block" id="coordinador">
-      <div class="coord-label">Zona del coordinador</div>
-      <div class="coord-title">Preguntas para el coloquio</div>
-      <ul class="questions-list">
-        <li>¿Qué significa para mí que «es la hora de los laicos»?</li>
-        <li>¿Dónde soy llamado a ser fermento en mi entorno concreto?</li>
-        <li>¿Qué ámbitos de mi vida necesitan presencia cristiana más decidida?</li>
-        <li>¿Cómo vivo la santidad en lo ordinario de cada día?</li>
-        <li>¿Qué me pide hoy el carisma del P. Morales?</li>
-      </ul>
-      <a href="ES_LA_HORA_DE_LOS_LAICOS_Andrés_Jiménez_adaptado_MoSM.pdf" class="coord-download" download>↓ Descargar texto completo en PDF</a>
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <h3>2 · El P. Morales y la hora de los laicos</h3>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>El venerable P. Tomás Morales SJ ha sido un clarividente profeta del laicado en nuestro tiempo. El «grito de alerta» lanzado por Pío XII en la exhortación «Por un mundo mejor» cala hondamente en él y se convierte en una llamada apremiante: «Un mundo camina, sin saberlo, por derroteros que llevan al abismo almas y cuerpos, buenos y malos, civilizaciones y pueblos…»</p>
+        <p>Tomás Morales concluye que «se impone la movilización total del laicado católico para salvar al mundo de la ruina. La apremiante llamada del Vaticano II, las ineludibles consignas de los últimos Papas, exigen que cada bautizado se ponga en marcha». «Es la hora de los laicos —continúa, insistente—; se ha rechazado primero a la Iglesia, luego a Jesucristo, finalmente a Dios».</p>
+        <p>Este será el núcleo de la vocación fundadora de Tomás Morales: la movilización en amplitud y profundidad de los seglares bautizados. Su punto de partida será la renovación interior, consistente en modelar la propia mentalidad y vida para asemejarse a Cristo. «Todo nace de las aguas del Bautismo».</p>
+      </div>
     </div>
 
-    <div class="appendix-note">
-      <h4>Apéndice · Lumen Gentium, Capítulo IV</h4>
-      <p>El texto incluye los artículos 30–38 de la Constitución dogmática sobre la Iglesia, que fundamentan doctrinalmente la vocación y misión de los laicos. Disponible en el PDF completo.</p>
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <h3>3 · La secularidad y el Vaticano II</h3>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Los bautizados laicos participan plenamente y son responsables de la misión del Pueblo de Dios de acuerdo con su índole secular. La índole secular propia del laicado significa contribuir a la salvación del mundo desde dentro, a modo de fermento. Es un modo concreto y específico de la secularidad propia de la Iglesia.</p>
+        <p>El modo en que toca a los fieles laicos ejercer esa secularidad es mostrar al mundo —desde dentro— el destino para el que fue creado por Dios y llevarlo a la perfección como partícipes del misterio redentor, a través de sus tareas, actividades y trabajos cotidianos. Como afirma el propio Concilio: «El cristiano que falta a sus obligaciones temporales, falta a sus deberes con el prójimo; falta, sobre todo, a sus obligaciones para con Dios».</p>
+        <p>No hay actividad humana alguna que sea ajena a la solidaria tarea evangelizadora de los laicos. La única vida de la que disponemos cada uno exige que de la fuente de la fe emanen aportaciones profesionales, culturales, políticas, familiares, sociales, etc., siempre relativas y mejorables por tratarse de obras humanas.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <h3>4 · Santidad laical: un testimonio de esperanza</h3>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Los cristianos participan de las contingencias de lo temporal, pero su fin no es el paraíso en la tierra; su fin y su tarea es hacer presente en la historia la fecundidad de la Gracia, estar en el mundo con un rostro nuevo, el de la pertenencia radical a Cristo.</p>
+        <p>Las tareas que desempeñan los fieles laicos en su vida cotidiana son el instrumento habitual de su santificación y de la redención del mundo. Esta es su vocación: plasmar la vida de fe y el amor de Cristo en los entresijos del vivir ordinario y normal de los hombres, que es el suyo.</p>
+        <p>La santidad laical no es un cristianismo cómodo sino un cristianismo de trincheras. «Los seglares deben asumir como tarea propia la renovación del orden temporal. Si el papel de la Jerarquía es el de enseñar a interpretar auténticamente los principios morales, a los seglares les corresponde, con su libre iniciativa y sin esperar pasivamente consignas, penetrar de espíritu cristiano la mentalidad y las costumbres, las leyes y las estructuras de la comunidad en la que viven».</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <h3>5 · Frente a la escalada del laicismo</h3>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Hoy se extiende como fuego desatado una visión reduccionista de la relación entre el mundo y la presencia de Dios: el laicismo. Es fruto, en parte, de una ofensiva hostil contra la religión cristiana; en parte, también, del silencio culpable de los cristianos que no ofrecen una respuesta propositiva, creíble, razonable, ilusionante, desacomplejada y audaz.</p>
+        <p>Se echa especialmente en falta la presencia de hombres y mujeres capaces de responder con agudeza, lucidez y poder de convicción a los problemas e interrogantes de nuestros contemporáneos desde los mismos medios de comunicación, cátedras, parlamentos, empresas, ámbitos sanitarios en los que se plantean las preguntas. El laicismo se extiende hoy no sólo por la audacia de los enemigos de la fe cristiana. El mal avanza porque los buenos, al parecer, no hacen nada.</p>
+        <p>Es preciso mostrar con la vida, y con argumentos convincentes, que Dios y el hombre no son enemigos, que la verdad y la libertad no se excluyen, que la vida eterna no es una huida de la temporal. Al contrario: son una mirada capaz de ver más hondo, más positiva y más humana.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <h3>6 · El carisma del P. Tomás Morales</h3>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Fernando Martín Herráez recordaba que Tomás Morales, como hombre de su tiempo fortalecido e iluminado por la fe, se sintió responsable de hacer un mundo mejor. «Se puede decir que se consagró totalmente a hacer realidad, mediante la dinamización de los laicos hacia la santidad, lo que dijo Pío XII en su discurso "Por un mundo mejor". En realidad y en el fondo, el P. Morales sólo tuvo una vocación: animar a la santidad».</p>
+        <p>La obra educadora y apostólica de Tomás Morales es, ante todo, «la puesta en acto y en valor de la vocación original del bautismo… el descubrimiento de una nueva relación de la Iglesia con el mundo, que estuvo siempre en la entraña de su doctrina, pero que parecía haber desaparecido bajo tantas capas acumuladas de bienintencionado clericalismo».</p>
+        <p>«Tú, como seglar, puedes hacer grandes cosas que hasta ahora no estás haciendo. Tienes que sentirte apóstol en tu medio ambiente: en tu oficina, en la calle, en tu instituto. Tienes que sentir que la Iglesia está en tensión misionera. Tú debes y puedes actuar. Cristo te necesita. Es la hora de los laicos». —Abelardo de Armas</p>
+      </div>
+    </div>
+
+    <!-- APÉNDICE COLAPSABLE -->
+    <div class="apendice-toggle" onclick="toggleApendice(this)">
+      <h3>Apéndice — Lumen Gentium, Capítulo IV: Los laicos (nn. 30–38)</h3>
+      <span>+</span>
+    </div>
+    <div class="apendice-body">
+      <p>El texto de Andrés Jiménez incluye como apéndice el capítulo IV de la Constitución Dogmática <em>Lumen Gentium</em> del Concilio Vaticano II, dedicado íntegramente a los laicos. Se recomienda su lectura directa en el PDF completo, disponible para descarga.</p>
+      <p>Los números 30 al 38 desarrollan: la función de los laicos en el Pueblo de Dios, su participación en el sacerdocio, el profetismo y la realeza de Cristo, su apostolado en el mundo, su relación con los pastores de la Iglesia y su vocación a la santidad desde la vida secular.</p>
+      <p>Este documento conciliar es el fundamento doctrinal de todo el plan de formación del bienio. Se recomienda que cada miembro del grupo lo lea completo antes del segundo coloquio del Texto D.</p>
+      <a href="ES_LA_HORA_DE_LOS_LAICOS_Andrés_Jiménez_adaptado_MoSM.pdf" download style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:.6rem 1.2rem;text-decoration:none">⬇ Descargar PDF completo con apéndice</a>
     </div>
 
   </div>
 
-  <!-- MODO TEXTO COMPLETO -->
-  <div class="mode-full" id="mode-full">
+  <div class="coordinator-zone" id="coordinador">
+    <div class="coor-label">◈ Zona del coordinador</div>
+    <h2>Recursos para<br /><em>conducir el coloquio</em></h2>
 
-    <div class="full-text-intro">
-      Texto íntegro de Andrés Jiménez. Incluye apéndice con Lumen Gentium, Capítulo IV (arts. 30–38).
-      <a href="ES_LA_HORA_DE_LOS_LAICOS_Andrés_Jiménez_adaptado_MoSM.pdf" download>↓ Descargar PDF completo</a>
+    <div class="coor-grid">
+      <div class="coor-block">
+        <h4>Puntos clave para presentar</h4>
+        <ul>
+          <li>El P. Morales no inventó nada: recuperó lo que siempre estuvo en la entraña del bautismo</li>
+          <li>La santidad laical no es un ideal para pocos selectos: es la obligación de todo bautizado</li>
+          <li>El laicismo avanza porque los bautizados no asumen su responsabilidad, no por la agresividad de los adversarios</li>
+          <li>La hora de los laicos es hoy: no en abstracto, sino en el propio medio ambiente concreto</li>
+        </ul>
+      </div>
+      <div class="coor-block">
+        <h4>Preguntas para el coloquio</h4>
+        <ul>
+          <li>¿Qué significa para mí esta «hora de los laicos»? ¿La siento como urgencia propia?</li>
+          <li>¿Dónde soy llamado a ser fermento en mi entorno concreto?</li>
+          <li>¿Qué ámbitos de la vida social, cultural o profesional necesitan más presencia cristiana?</li>
+          <li>¿Cómo vivo la santidad en lo ordinario? ¿Qué cambiaría si lo tomara en serio?</li>
+          <li>¿Qué me pide hoy el carisma del P. Morales a mí personalmente?</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="full-toc">
-      <h4>Índice</h4>
-      <ol>
-        <li><a href="#sec1">Dios está en tus manos</a></li>
-        <li><a href="#sec2">La hora de los laicos — el P. Morales como profeta</a></li>
-        <li><a href="#sec3">El laicado en el Concilio Vaticano II</a></li>
-        <li><a href="#sec4">El laicado, testimonio de esperanza para el mundo de hoy</a></li>
-        <li><a href="#sec5">La defección de los cristianos y el olvido de una misión</a></li>
-        <li><a href="#sec6">Frente a la escalada del laicismo</a></li>
-        <li><a href="#sec7">El carisma del P. Tomás Morales y el laicado</a></li>
-      </ol>
+    <div class="sessions-block">
+      <h4>Sugerencia de distribución en sesiones</h4>
+      <div class="session-row">
+        <div class="session-num">1</div>
+        <div class="session-content"><strong>La hora de los laicos y la secularidad (puntos 1–3)</strong>Partir del relato del coolie indio. ¿Tiene para mí el trabajo el sentido que tuvo para él aquel día? ¿Cómo lo vivo?</div>
+      </div>
+      <div class="session-row">
+        <div class="session-num">2</div>
+        <div class="session-content"><strong>Santidad laical, laicismo y carisma (puntos 4–6)</strong>¿Cuál es mi respuesta personal a la llamada del P. Morales? Concretar un compromiso para el curso.</div>
+      </div>
     </div>
 
-    <div class="text-section" id="sec1">
-      <h3>1. Dios está en tus manos</h3>
-      <p>Douglas Hyde fue un reconocido líder comunista que se convirtió al catolicismo. En su libro <em>Cómo formar dirigentes</em> relata la siguiente escena: un viejo sacerdote indio predicaba a sus feligreses el sábado de Pascua. Les decía que para encontrar al Señor resucitado no hay que mirar en el sepulcro ni en los alrededores del jardín. «Si tú estás bautizado, Él está en tus manos. Cuando mañana vayas a trabajar, cualquier cosa que hagas en tu trabajo de cada día está cooperando con la obra creadora de Dios. Dios está en tus manos.»</p>
-      <p>Un anciano trabajador se miró las manos desgastadas y callosas con una especie de terror. Algo tremendo le estaba sucediendo: la verdad penetraba en su conciencia. Su trabajo acababa de adquirir un significado nuevo y sublime. Su cristianismo había dado un significado a su trabajo. Este es el modo como un cristiano debe ver su trabajo. Para los cristianos, los valores de la misa del domingo deberían trasladarse a la fábrica, a la oficina, al escaño en el Parlamento. Pero normalmente no es así, y por eso el trabajo se hace insoportable por falta de sentido.</p>
+    <div class="questions-block">
+      <h4>Para la reflexión personal previa al coloquio</h4>
+      <div class="question-item"><p>¿Hay alguien en tu entorno —trabajo, familia, amigos— que no pisará una iglesia, para quien tú serás la única Iglesia que conozca? ¿Cómo te sientes con esa responsabilidad?</p></div>
+      <div class="question-item"><p>Si el P. Morales te viera vivir esta semana, ¿qué te diría? ¿Qué cambiarías?</p></div>
     </div>
-
-    <div class="text-section" id="sec2">
-      <h3>2. La hora de los laicos — el P. Morales como profeta</h3>
-      <p>El venerable P. Tomás Morales SJ ha sido un clarividente profeta del laicado en nuestro tiempo. El «grito de alerta» lanzado por Pío XII en <em>Por un mundo mejor</em> (1952) caló hondamente en él y se convirtió en una vocación hondamente sentida: «Un mundo camina, sin saberlo, por derroteros que llevan al abismo almas y cuerpos, buenos y malos, civilizaciones y pueblos…»</p>
-      <p>Tomás Morales concluyó que «se impone la movilización total del laicado católico para salvar al mundo de la ruina». Escribía en 1974: «Es la hora de los laicos; se ha rechazado primero a la Iglesia, luego a Jesucristo, finalmente a Dios, y se ha querido edificar la estructura del mundo sobre fundamentos que son los principales responsables de la situación actual: una economía sin Dios, un derecho sin Dios, una política sin Dios.»</p>
-      <p>La urgencia del momento ha de llevarnos a convertirnos en despertadores y defensores en nuestro entorno de la dignidad y responsabilidad de los laicos, y a formar — en expresión de Santiago Arellano — «apóstoles de la laicidad».</p>
-    </div>
-
-    <div class="text-section" id="sec3">
-      <h3>3. El laicado en el Concilio Vaticano II</h3>
-      <p>San Pablo VI habló de una «primavera del laicado» en el último tercio del siglo XX. San Juan Pablo II, especialmente a través de la <em>Christifideles laici</em>, avanzó mucho en la comprensión de la vocación del laicado católico. Los bautizados laicos participan plenamente y son responsables de la misión del Pueblo de Dios de acuerdo con su índole secular.</p>
-      <p>La índole secular propia del laicado significa contribuir a la salvación del mundo desde dentro, a modo de fermento. El modo en que toca a los fieles laicos ejercer esa secularidad es mostrar al mundo — desde dentro — el destino para el que fue creado por Dios y llevarlo a la perfección como partícipes del misterio redentor, a través de sus tareas, actividades y trabajos cotidianos.</p>
-      <blockquote><p>«El cristiano que falta a sus obligaciones temporales, falta a sus deberes con el prójimo; falta, sobre todo, a sus obligaciones para con Dios y pone en peligro su eterna salvación.»</p><cite>Gaudium et Spes, n. 43</cite></blockquote>
-    </div>
-
-    <div class="text-section" id="sec4">
-      <h3>4. El laicado, testimonio de esperanza para el mundo de hoy</h3>
-      <p>Los cristianos participan de las contingencias de lo temporal, pero su fin no es el paraíso en la tierra; su tarea es hacer presente en la historia la fecundidad de la Gracia, estar en el mundo con un rostro nuevo, el de la pertenencia radical a Cristo.</p>
-      <p>Así, la familia, el trabajo, la diversión, la amistad o la política pasan a ser eficaces medios de crecimiento en la gracia, auténticos caminos de santidad. Las tareas que desempeñan los fieles laicos en su vida cotidiana son el instrumento habitual de su santificación y de la redención del mundo. Esta es su vocación: plasmar la vida de fe y el amor de Cristo en los entresijos del vivir ordinario.</p>
-      <blockquote><p>«El mundo está destinado a dar gloria a Dios.»</p><cite>San Juan Pablo II, Christifideles laici, n. 15</cite></blockquote>
-      <p>Para muchos, ser dentista, locutor o empresario es el modo concreto que tienen de vivir y ser cristianos. O ser amigo, o estudiante, o ama de casa. Y serlo a fondo, de todo corazón, convirtiéndolo en «algo sagrado». Tales dedicaciones no son un añadido a su condición de creyentes, sino precisamente la concreción de su fe.</p>
-    </div>
-
-    <div class="text-section" id="sec5">
-      <h3>5. La defección de los cristianos y el olvido de una misión</h3>
-      <p>La raíz más profunda de la crisis que hoy atraviesa el mundo es la deserción de los bautizados que dejan de ser fermento en medio del mundo para convertirse en masa amorfa. Sólo hay una respuesta frente a la paganización creciente de las masas: reconquistar para la fe a los bautizados inconsecuentes y acudir al encuentro de la humanidad que no cree.</p>
-      <p>El P. Morales advertirá dos consecuencias graves del olvido de esta misión: un romo clericalismo que favorece la inercia de los laicos, y un radical laicismo facilitado por la ausencia de laicos preparados para asumir su responsabilidad cristiana en el mundo.</p>
-      <blockquote><p>«Cuando un bautizado toma conciencia de su fe, se hace misionero.»</p><cite>San Juan Pablo II en Javier, 1982 — recogido por el P. Morales</cite></blockquote>
-      <p>La santidad laical no es un cristianismo cómodo sino un cristianismo de trincheras. «Los seglares deben asumir como tarea propia la renovación del orden temporal. Si el papel de la Jerarquía es el de enseñar los principios morales, a los seglares les corresponde, con su libre iniciativa y sin esperar pasivamente consignas, penetrar de espíritu cristiano la mentalidad y las costumbres, las leyes y las estructuras de la comunidad en la que viven.» (Pablo VI, Populorum progressio, n. 81)</p>
-    </div>
-
-    <div class="text-section" id="sec6">
-      <h3>6. Frente a la escalada del laicismo</h3>
-      <p>Hoy se extiende como fuego desatado una visión reduccionista de la relación entre el mundo y la presencia de Dios: el laicismo. Es fruto, en parte, de una ofensiva hostil contra la religión cristiana; en parte, también, del silencio culpable de los cristianos que no ofrecen una respuesta propositiva, creíble, razonable, ilusionante, desacomplejada y audaz.</p>
-      <p>El laicismo se funda en la pretensión de que la razón por sí sola, excluida la fe en Dios, abre los caminos a la libertad y al progreso. Pero es preciso que desde los mismos areópagos en que se pregona tal idea se escuche también que si la razón no se abre a la fe, se absolutiza. El laicismo, en el fondo, es una fe — y una fe radicalizada —, y por tanto no es verdadera laicidad sino arrogancia de la razón.</p>
-      <p>Es preciso mostrar con la vida y con argumentos convincentes que Dios y el hombre no son enemigos, que la verdad y la libertad no se excluyen, que la vida eterna no es una huida de la temporal. El mal, dijo alguien, avanza porque los buenos, al parecer, no hacen nada.</p>
-    </div>
-
-    <div class="text-section" id="sec7">
-      <h3>7. El carisma del P. Tomás Morales y el laicado</h3>
-      <p>Tomás Morales, como hombre de su tiempo fortalecido e iluminado por la fe, se sintió responsable de hacer un mundo mejor. Su obra educadora y apostólica es, ante todo, la puesta en acto y en valor de la vocación original del bautismo — el descubrimiento de una nueva relación de la Iglesia con el mundo, que estuvo siempre en la entraña de su doctrina.</p>
-      <blockquote><p>«Ha llegado la hora en que ningún católico puede escudarse en el anonimato o en la indiferencia resignada, y renunciar a dar razón de la esperanza que el Evangelio es para la humanidad. ¡Ay de mí si no evangelizare! Y debemos hacerlo con humildad, con afán de servicio y con temple martirial.»</p><cite>Fernando Martín Herráez, Actas I Congreso Internacional «Profeta de nuestro tiempo»</cite></blockquote>
-      <p>«Tú, como seglar, puedes hacer grandes cosas que hasta ahora no estás haciendo. Tienes que sentirte apóstol en tu medio ambiente: en tu oficina, en la calle, en tu instituto. Tienes que sentir que la Iglesia está en tensión misionera. Tú debes y puedes actuar. Cristo te necesita. Es la hora de los laicos.» (Abelardo de Armas)</p>
-    </div>
-
-    <div class="coord-block">
-      <div class="coord-label">Zona del coordinador</div>
-      <div class="coord-title">Preguntas para el coloquio</div>
-      <ul class="questions-list">
-        <li>¿Qué significa para mí que «es la hora de los laicos»?</li>
-        <li>¿Dónde soy llamado a ser fermento en mi entorno concreto?</li>
-        <li>¿Qué ámbitos de mi vida necesitan presencia cristiana más decidida?</li>
-        <li>¿Cómo vivo la santidad en lo ordinario de cada día?</li>
-        <li>¿Qué me pide hoy el carisma del P. Morales?</li>
-      </ul>
-      <a href="ES_LA_HORA_DE_LOS_LAICOS_Andrés_Jiménez_adaptado_MoSM.pdf" class="coord-download" download>↓ Descargar texto completo en PDF</a>
-    </div>
-
-    <div class="appendix-note">
-      <h4>Apéndice · Lumen Gentium, Capítulo IV — Los laicos</h4>
-      <p>El texto original incluye los artículos 30 al 38 de la Constitución dogmática sobre la Iglesia, que fundamentan doctrinalmente la vocación y misión de los fieles laicos en la Iglesia y en el mundo. Disponible íntegramente en el PDF adjunto.</p>
-    </div>
-
   </div>
+
+</div>
+
+<div class="text-footer-nav">
+  <a href="texto-c.html">← Texto C — Elías Royón</a>
+  <a href="index.html#textos" class="next-link">← Volver al Plan de Formación</a>
 </div>
 
 <footer>
   <div class="footer-logo">Movimiento de Santa María</div>
-  <hr />
-  <p>Plan de Formación · Bienio 2026–2028 · <em>Contemplativos en la Acción</em></p>
+  <hr /><p>Plan de Formación · Bienio 2026–2028</p>
 </footer>
 
 <script>
-  function setMode(mode) {
-    document.getElementById('mode-summary').style.display = mode === 'summary' ? 'block' : 'none';
-    document.getElementById('mode-full').style.display = mode === 'full' ? 'block' : 'none';
-    document.querySelectorAll('.toggle-btn').forEach((btn, i) => {
-      btn.classList.toggle('active', (mode==='summary'&&i===0)||(mode==='full'&&i===1));
-    });
+  function setMode(mode){
+    const s=document.getElementById('summary-mode'),f=document.getElementById('full-mode'),bS=document.getElementById('btn-summary'),bF=document.getElementById('btn-full');
+    if(mode==='summary'){s.classList.remove('hidden');f.classList.remove('visible');bS.classList.add('active');bF.classList.remove('active');}
+    else{s.classList.add('hidden');f.classList.add('visible');bS.classList.remove('active');bF.classList.add('active');}
+  }
+  function toggleAccordion(h){
+    const b=h.nextElementSibling,o=h.classList.contains('open');
+    document.querySelectorAll('.accordion-header.open').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+    if(!o){h.classList.add('open');b.classList.add('open');}
+  }
+  function toggleApendice(toggle){
+    const body=toggle.nextElementSibling;
+    const icon=toggle.querySelector('span');
+    const isOpen=body.classList.contains('open');
+    body.classList.toggle('open');
+    icon.textContent=isOpen?'+':'−';
   }
 </script>
 </body>
